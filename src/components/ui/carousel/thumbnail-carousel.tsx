@@ -14,7 +14,7 @@ import { useRouter } from 'next/router';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 interface Props {
-  gallery: any[];
+  gallery: any;
   thumbnailClassName?: string;
   galleryClassName?: string;
 }
@@ -60,16 +60,15 @@ const ThumbnailCarousel: React.FC<Props> = ({
           }}
           {...swiperParams}
         >
-          {gallery?.map((item: any) => (
+          {Object.keys(gallery)?.map((item: any, key: any) => (
             <SwiperSlide
-              key={`product-gallery-${item.id}`}
+              key={`product-gallery-${key}`}
               className="flex items-center justify-center"
             >
-              <Image
-                src={item?.original ?? productGalleryPlaceholder}
-                alt={`Product gallery ${item.id}`}
-                width={650}
-                height={590}
+              <img
+                src={gallery[item]}
+                alt={`Product gallery ${key}`}
+                style={{ width: 550, height: 300, marginTop: '15%' }}
                 className="rounded-lg"
               />
             </SwiperSlide>
@@ -91,7 +90,6 @@ const ThumbnailCarousel: React.FC<Props> = ({
         </div>
       </div>
       {/* End of product main slider */}
-
       <div className={`flex-shrink-0 ${galleryClassName}`}>
         <Swiper
           id="productGalleryThumbs"
@@ -103,18 +101,18 @@ const ThumbnailCarousel: React.FC<Props> = ({
           observeParents={true}
           breakpoints={galleryCarouselBreakpoints}
         >
-          {gallery?.map((item: any) => (
-            <SwiperSlide
-              key={`product-thumb-gallery-${item.id}`}
-              className="flex items-center justify-center cursor-pointer rounded overflow-hidden border border-skin-base transition hover:opacity-75"
-            >
-              <Image
-                src={item?.thumbnail ?? productGalleryPlaceholder}
-                alt={`Product thumb gallery ${item.id}`}
-                width={170}
-                height={170}
-              />
-            </SwiperSlide>
+          {Object.keys(gallery)?.map((item: any, key: any) => (
+            key < 2 ?
+              <SwiperSlide
+                key={`product-thumb-gallery-${key}`}
+                className="flex items-center justify-center cursor-pointer rounded overflow-hidden border border-skin-base transition hover:opacity-75"
+              >
+                <img
+                  src={gallery[item]}
+                  alt={`Product thumb gallery ${key}`}
+                  style={{ width: 170, height: 170 }}
+                />
+              </SwiperSlide> : null
           ))}
         </Swiper>
       </div>

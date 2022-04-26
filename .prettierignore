@@ -4,3 +4,6 @@ public
 .husky
 next-env.d.ts
 yarn.lock
+src
+README.md
+tsconfig.json

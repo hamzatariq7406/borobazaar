@@ -17,7 +17,7 @@ const CategoryDropdownMenu: React.FC<CategoryDropdownProps> = ({
     data,
     isLoading: loading,
     error,
-  } = useCategoriesQuery({
+  } : any = useCategoriesQuery({
     limit: 15,
   });
 

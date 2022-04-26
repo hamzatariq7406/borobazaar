@@ -5,10 +5,11 @@ import { useRouter } from 'next/router';
 import usePrice from '@framework/product/use-price';
 import { useTranslation } from 'next-i18next';
 
-export default function OrderInformation() {
+export default function OrderInformation({ items , totals }: any) {
   const {
     query: { id },
   } = useRouter();
+
   const { t } = useTranslation('common');
   const { data, isLoading } = useOrderQuery(id?.toString()!);
   const { price: total } = usePrice(
@@ -18,6 +19,13 @@ export default function OrderInformation() {
     }
   );
   if (isLoading) return <p>Loading...</p>;
+
+  let today: any = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
   return (
     <div className="xl:px-32 2xl:px-44 3xl:px-56 py-16 lg:py-20">
       <div className="border border-skin-base bg-skin-secondary px-4 lg:px-5 py-4 rounded-md flex items-center justify-start text-skin-base text-sm md:text-base mb-6 lg:mb-8">
@@ -38,7 +46,7 @@ export default function OrderInformation() {
           <span className="uppercase text-[11px] block text-skin-muted font-normal leading-5">
             {t('text-date')}:
           </span>
-          April 22, 2021
+          {today}
         </li>
         <li className="text-skin-base font-semibold text-base lg:text-lg border-b md:border-b-0 md:border-r border-dashed border-gray-300 px-4 lg:px-6 xl:px-8 py-4 md:py-5 lg:py-6 last:border-0">
           <span className="uppercase text-[11px] block text-skin-muted font-normal leading-5">
@@ -50,7 +58,7 @@ export default function OrderInformation() {
           <span className="uppercase text-[11px] block text-skin-muted font-normal leading-5">
             {t('text-total')}:
           </span>
-          {total}
+          {`$${totals}`}
         </li>
         <li className="text-skin-base font-semibold text-base lg:text-lg border-b md:border-b-0 md:border-r border-dashed border-gray-300 px-4 lg:px-6 xl:px-8 py-4 md:py-5 lg:py-6 last:border-0">
           <span className="uppercase text-[11px] block text-skin-muted font-normal leading-5">
@@ -64,7 +72,7 @@ export default function OrderInformation() {
         {t('text-pay-cash')}
       </p>
 
-      <OrderDetails />
+      <OrderDetails items={items} totals={totals}/>
     </div>
   );
 }

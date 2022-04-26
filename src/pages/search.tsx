@@ -26,10 +26,10 @@ export default function Search() {
       />
       <Divider />
       <Container>
-        <Element name="grid" className="flex pt-7 lg:pt-11 pb-16 lg:pb-20">
-          <div className="flex-shrink-0 pe-8 xl:pe-16 hidden lg:block w-80 xl:w-96 sticky top-16 h-full">
-            <ShopFilters />
-          </div>
+        <Element name="grid" className="flex pt-7 lg:pt-11 pb-16 lg:pb-20" style={{marginLeft:'5%'}}>
+          {/* <div className="flex-shrink-0 pe-8 xl:pe-16 hidden lg:block w-80 xl:w-96 sticky top-16 h-full"> */}
+            {/* <ShopFilters /> */}
+          {/* </div> */}
           <div className="w-full lg:-ms-2 xl:-ms-8 lg:-mt-1">
             <SearchTopBar />
             <ProductGrid />

@@ -18,13 +18,15 @@ const HeroBannerWithCategory: React.FC<Props> = ({
   const { data } = useCategoriesQuery({
     limit: LIMITS.CATEGORIES_LIMITS,
   });
+
+
   return (
     <div className={`xl:flex md:pb-2.5 ${className}`}>
       <div className="hidden xl:block flex-shrink-0 pe-8 xl:pe-16 xl:w-[400px] pt-[1px]">
         <div className="border border-skin-base rounded-md flex flex-col h-full justify-between">
-          {data?.categories?.data?.slice(0, 10)?.map((category) => (
+          {data?.categories?.data?.slice(0, 10)?.map((category, key) => (
             <CategoryListCard
-              key={`category--key-${category.id}`}
+              key={`category--key-${key}`}
               category={category}
               href={{
                 pathname: ROUTES.SEARCH,
@@ -37,7 +39,7 @@ const HeroBannerWithCategory: React.FC<Props> = ({
         </div>
       </div>
       <div className="trendy-main-content w-full xl:-ms-8">
-      <MovingBanner/>
+        <MovingBanner />
         <BannerAllCarousel
           data={bannerDiscount}
           buttonSize="small"

@@ -7,8 +7,8 @@ import { useTranslation } from 'next-i18next';
 import { LinkProps } from 'next/link';
 
 interface Props {
-  category: Category;
-  href: LinkProps['href'];
+  category: any;
+  href: any;
   className?: string;
   variant?: 'default' | 'small';
 }
@@ -19,10 +19,12 @@ const CategoryListCard: React.FC<Props> = ({
   href,
   variant = 'default',
 }) => {
-  const { name, icon } = category;
+  const name = category.displayName;
+  const icon = category.thumbImage;
   const { t } = useTranslation('common');
+
   return (
-    <Link href={href}>
+    <Link href={{ pathname: href.pathname, query: { category: name } }}>
       <a
         className={cn(
           'group flex justify-between items-center px-3.5 2xl:px-4 transition',
@@ -39,19 +41,18 @@ const CategoryListCard: React.FC<Props> = ({
               '2xl:w-12 3xl:w-auto 2xl:h-12 3xl:h-auto': variant === 'default',
             })}
           >
-            <Image
-              src={icon ?? '/assets/placeholder/category-small.svg'}
+            {icon ? <img src={icon} style={{ width: '40px', height: '40px' }} alt={name} /> : null}
+
+            {/* <Image
+              src={icon}
               alt={name || t('text-category-thumbnail')}
               width={40}
               height={40}
-            />
+            /> */}
           </div>
           <h3 className="text-15px text-skin-base capitalize ps-2.5 md:ps-4 2xl:ps-3 3xl:ps-4">
             {name}
           </h3>
-        </div>
-        <div className="flex items-center transition-all transform group-hover:translate-x-1">
-          <IoIosArrowForward className="text-base text-skin-base text-opacity-40" />
         </div>
       </a>
     </Link>

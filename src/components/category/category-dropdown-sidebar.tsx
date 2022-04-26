@@ -13,10 +13,10 @@ const CategoryDropdownSidebar: React.FC<CategorySidebarProps> = ({
   className,
 }) => {
   const {
-    data,
+    data ,
     isLoading: loading,
     error,
-  } = useCategoriesQuery({
+  } : any = useCategoriesQuery({
     limit: 10,
   });
 

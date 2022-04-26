@@ -8,8 +8,10 @@ type PaginatedProduct = {
   paginatorInfo: any;
 };
 const fetchProducts = async ({ queryKey }: any) => {
+  const pathName = queryKey[1].category;
   const [_key, _params] = queryKey;
-  const { data } = await http.get(API_ENDPOINTS.PRODUCTS);
+  
+  const { data } = await http.get(`/${pathName}.json`);
   return {
     data: shuffle(data) as Product[],
     paginatorInfo: {

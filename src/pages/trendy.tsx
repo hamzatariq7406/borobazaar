@@ -30,7 +30,7 @@ export default function Home() {
       />
       <Container>
         <HeroBannerWithCategory />
-        <BundleComboGrid data={bundle} />
+        {/* <BundleComboGrid data={bundle} /> */}
         <BestSellerGroceryProductFeed />
         <BannerGrid
           data={banners}

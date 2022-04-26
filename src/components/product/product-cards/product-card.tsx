@@ -11,21 +11,21 @@ import { useTranslation } from 'next-i18next';
 import { productPlaceholder } from '@assets/placeholders';
 
 interface ProductProps {
-  product: Product;
+  product: any;
   className?: string;
 }
 function RenderPopupOrAddToCart({ data }: { data: Product }) {
   const { t } = useTranslation('common');
-  const { id, quantity, product_type } = data ?? {};
+  let { product_type } = data ?? {};
+  product_type = "variable";
+  const quantity = data.reviews;
   const { width } = useWindowSize();
   const { openModal } = useModalAction();
-  const { isInCart, isInStock } = useCart();
   const iconSize = width! > 1024 ? '19' : '17';
-  const outOfStock = isInCart(id) && !isInStock(id);
   function handlePopupView() {
     openModal('PRODUCT_VIEW', data);
   }
-  if (Number(quantity) < 1 || outOfStock) {
+  if (Number(quantity) < 1) {
     return (
       <span className="text-[11px] md:text-xs font-bold text-skin-inverted uppercase inline-block bg-skin-red rounded-full px-2.5 pt-1 pb-[3px] mx-0.5 sm:mx-1">
         {t('text-out-stock')}
@@ -46,22 +46,28 @@ function RenderPopupOrAddToCart({ data }: { data: Product }) {
   return <AddToCart data={data} />;
 }
 const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
-  const { name, image, unit, product_type } = product ?? {};
+  //const { name, image, unit, product_type } = product ?? {};
+  const name = product.productName;
+  const image = product.heroImage;
+  const unit = "1 each";
+  const product_type = product.brandName;
+
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
   const { price, basePrice, discount } = usePrice({
-    amount: product?.sale_price ? product?.sale_price : product?.price,
-    baseAmount: product?.price,
+    amount: product?.currentSku?.salePrice ? product?.currentSku?.salePrice : product?.currentSku?.listPrice,
+    baseAmount: product?.currentSku?.listPrice,
     currencyCode: 'USD',
   });
   const { price: minPrice } = usePrice({
-    amount: product?.min_price ?? 0,
+    amount: product?.currentSku?.listPrice ?? 0,
     currencyCode: 'USD',
   });
   const { price: maxPrice } = usePrice({
-    amount: product?.max_price ?? 0,
+    amount: product?.currentSku?.listPrice ?? 0,
     currencyCode: 'USD',
   });
+
 
   function handlePopupView() {
     openModal('PRODUCT_VIEW', product);
@@ -77,12 +83,10 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
     >
       <div className="relative flex-shrink-0">
         <div className="flex overflow-hidden max-w-[230px] mx-auto transition duration-200 ease-in-out transform group-hover:scale-105 relative">
-          <Image
-            src={image?.thumbnail ?? productPlaceholder}
+          <img
+            src={image}
             alt={name || 'Product Image'}
-            width={230}
-            height={200}
-            quality={100}
+            style={{ height: 200, width: 230 }}
             className="object-cover bg-skin-thumbnail"
           />
         </div>
@@ -101,7 +105,7 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
       <div className="flex flex-col px-3 md:px-4 lg:px-[18px] pb-5 lg:pb-6 lg:pt-1.5 h-full">
         <div className="space-s-2 mb-1 lg:mb-1.5">
           <span className="inline-block font-semibold text-sm sm:text-15px lg:text-base text-skin-base">
-            {product_type === 'variable' ? `${minPrice} - ${maxPrice}` : price}
+            {product_type === 'variable' ? `${minPrice} - ${maxPrice}` : product?.currentSku?.listPrice}
           </span>
           {basePrice && (
             <del className="text-sm text-skin-base text-opacity-70">

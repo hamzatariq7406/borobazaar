@@ -2,13 +2,11 @@ import { useOrderQuery } from '@framework/order/get-order';
 import usePrice from '@framework/product/use-price';
 import { OrderItem } from '@framework/types';
 import { useRouter } from 'next/router';
+import { useCart } from '@contexts/cart/cart.context';
 import { useTranslation } from 'next-i18next';
 import Heading from '@components/ui/heading';
-const OrderItemCard = ({ product }: { product: OrderItem }) => {
-  const { price: itemTotal } = usePrice({
-    amount: product.price * product.quantity,
-    currencyCode: 'USD',
-  });
+const OrderItemCard = ({ product }: { product: any }) => {
+
   return (
     <tr
       className="border-b font-normal border-skin-base last:border-b-0"
@@ -17,17 +15,20 @@ const OrderItemCard = ({ product }: { product: OrderItem }) => {
       <td className="p-4">
         {product.name} * {product.quantity}
       </td>
-      <td className="p-4">{itemTotal}</td>
+      <td className="p-4">{`$${product?.itemTotal}`}</td>
     </tr>
   );
 };
-const OrderDetails: React.FC<{ className?: string }> = ({
+const OrderDetails: any = ({
   className = 'pt-10 lg:pt-12',
-}) => {
+  items,
+  totals
+}: any) => {
   const { t } = useTranslation('common');
   const {
     query: { id },
   } = useRouter();
+
   const { data: order, isLoading } = useOrderQuery(id?.toString()!);
   const { price: subtotal } = usePrice(
     order && {
@@ -49,7 +50,9 @@ const OrderDetails: React.FC<{ className?: string }> = ({
       currencyCode: 'USD',
     }
   );
+
   if (isLoading) return <p>Loading...</p>;
+
 
   return (
     <div className={className}>
@@ -68,14 +71,15 @@ const OrderDetails: React.FC<{ className?: string }> = ({
           </tr>
         </thead>
         <tbody>
-          {order?.products.map((product, index) => (
-            <OrderItemCard key={index} product={product} />
-          ))}
+          {items.map((item: any, index: any) => (
+            <OrderItemCard key={index} product={item} />
+          )
+          )}
         </tbody>
         <tfoot>
           <tr className="odd:bg-skin-secondary">
             <td className="p-4 italic">{t('text-sub-total')}:</td>
-            <td className="p-4">{subtotal}</td>
+            <td className="p-4">{`$${totals}`}</td>
           </tr>
           <tr className="odd:bg-skin-secondary">
             <td className="p-4 italic">{t('text-shipping')}:</td>
@@ -92,7 +96,7 @@ const OrderDetails: React.FC<{ className?: string }> = ({
           </tr>
           <tr className="odd:bg-skin-secondary">
             <td className="p-4 italic">{t('text-total')}:</td>
-            <td className="p-4">{total}</td>
+            <td className="p-4">{`$${parseInt(totals) + 17}`}</td>
           </tr>
           <tr className="odd:bg-skin-secondary">
             <td className="p-4 italic">{t('text-note')}:</td>

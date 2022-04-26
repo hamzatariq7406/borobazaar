@@ -72,17 +72,31 @@ export default function ProductPopup() {
     baseAmount: data.price,
     currencyCode: 'USD',
   });
+
   const variations = getVariations(data.variations);
-  const { slug, image, name, unit, description, gallery, tag, quantity } = data;
+
+  const name = data.productName;
+  const slug = data.productName;
+  const image = data.heroImage;
+  const unit = "1 each";
+  const tag: any = [{
+    id: '1',
+    name: data.brandName,
+    slug: data.brandName
+  }];
+  const gallery = data.currentSku?.skuImages;
+  const description = data.currentSku?.imageAltText;
+  const quantity = data.reviews;
+
   const productUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${ROUTES.PRODUCT}/${slug}`;
   const handleChange = () => {
     setShareButtonStatus(!shareButtonStatus);
   };
   const isSelected = !isEmpty(variations)
     ? !isEmpty(attributes) &&
-      Object.keys(variations).every((variation) =>
-        attributes.hasOwnProperty(variation)
-      )
+    Object.keys(variations).every((variation) =>
+      attributes.hasOwnProperty(variation)
+    )
     : true;
   let selectedVariation: any = {};
   if (isSelected) {
@@ -93,7 +107,7 @@ export default function ProductPopup() {
       )
     );
   }
-  const item = generateCartItem(data, selectedVariation);
+  const item = generateCartItem(data, selectedVariation)
   const outOfStock = isInCart(item.id) && !isInStock(item.id);
   function addToCart() {
     if (!isSelected) return;
@@ -102,6 +116,7 @@ export default function ProductPopup() {
     setTimeout(() => {
       setAddToCartLoader(false);
     }, 1500);
+    
     addItemToCart(item, selectedQuantity);
     toast(t('text-added-bag'), {
       progressClassName: 'fancy-progress-bar',
@@ -146,15 +161,14 @@ export default function ProductPopup() {
         <div className="px-4 md:px-6 lg:p-8 2xl:p-10 mb-9 lg:mb-2 pt-4 md:pt-7 2xl:pt-10">
           <div className="lg:flex items-start justify-between">
             <div className="xl:flex items-center justify-center overflow-hidden mb-6 md:mb-8 lg:mb-0">
-              {!!gallery?.length ? (
+              {Object.keys(gallery).length > 0 ? (
                 <ThumbnailCarousel gallery={gallery} />
               ) : (
                 <div className="w-auto flex items-center justify-center">
-                  <Image
-                    src={image?.original ?? productGalleryPlaceholder}
-                    alt={name!}
-                    width={650}
-                    height={590}
+                  <img
+                    src={image}
+                    alt={name}
+                    style={{ width: 550, height: 300, marginTop: '15%' }}
                   />
                 </div>
               )}
@@ -234,15 +248,14 @@ export default function ProductPopup() {
                 {!isEmpty(selectedVariation) && (
                   <span className="text-sm font-medium text-skin-yellow-two">
                     {selectedVariation?.is_disable ||
-                    selectedVariation.quantity === 0
+                      selectedVariation.quantity === 0
                       ? t('text-out-stock')
-                      : `${
-                          t('text-only') +
-                          ' ' +
-                          selectedVariation.quantity +
-                          ' ' +
-                          t('text-left-item')
-                        }`}
+                      : `${t('text-only') +
+                      ' ' +
+                      selectedVariation.quantity +
+                      ' ' +
+                      t('text-left-item')
+                      }`}
                   </span>
                 )}
               </div>
@@ -258,7 +271,7 @@ export default function ProductPopup() {
                   disabled={
                     isInCart(item.id)
                       ? getItemFromCart(item.id).quantity + selectedQuantity >=
-                        Number(item.stock)
+                      Number(item.stock)
                       : selectedQuantity >= Number(item.stock)
                   }
                 />
@@ -276,9 +289,8 @@ export default function ProductPopup() {
                     variant="border"
                     onClick={addToWishlist}
                     loading={addToWishlistLoader}
-                    className={`group hover:text-skin-primary ${
-                      favorite === true && 'text-skin-primary'
-                    }`}
+                    className={`group hover:text-skin-primary ${favorite === true && 'text-skin-primary'
+                      }`}
                   >
                     {favorite === true ? (
                       <IoIosHeart className="text-2xl md:text-[26px] me-2 transition-all" />
@@ -291,20 +303,18 @@ export default function ProductPopup() {
                   <div className="relative group">
                     <Button
                       variant="border"
-                      className={`w-full hover:text-skin-primary ${
-                        shareButtonStatus === true && 'text-skin-primary'
-                      }`}
+                      className={`w-full hover:text-skin-primary ${shareButtonStatus === true && 'text-skin-primary'
+                        }`}
                       onClick={handleChange}
                     >
                       <IoArrowRedoOutline className="text-2xl md:text-[26px] me-2 transition-all group-hover:text-skin-primary" />
                       {t('text-share')}
                     </Button>
                     <SocialShareBox
-                      className={`absolute z-10 end-0 w-[300px] md:min-w-[400px] transition-all duration-300 ${
-                        shareButtonStatus === true
-                          ? 'visible opacity-100 top-full'
-                          : 'opacity-0 invisible top-[130%]'
-                      }`}
+                      className={`absolute z-10 end-0 w-[300px] md:min-w-[400px] transition-all duration-300 ${shareButtonStatus === true
+                        ? 'visible opacity-100 top-full'
+                        : 'opacity-0 invisible top-[130%]'
+                        }`}
                       shareUrl={productUrl}
                     />
                   </div>
@@ -328,15 +338,7 @@ export default function ProductPopup() {
                   {t('text-product-details')}:
                 </Heading>
                 <Text variant="small">
-                  {description.split(' ').slice(0, 40).join(' ')}
-                  {'...'}
-                  <span
-                    onClick={navigateToProductPage}
-                    role="button"
-                    className="text-skin-primary ms-0.5"
-                  >
-                    {t('text-read-more')}
-                  </span>
+                  {description}
                 </Text>
               </div>
             </div>

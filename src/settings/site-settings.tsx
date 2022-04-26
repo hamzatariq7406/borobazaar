@@ -6,7 +6,7 @@ import { DEFlag } from '@components/icons/language/DEFlag';
 import { ESFlag } from '@components/icons/language/ESFlag';
 
 export const siteSettings = {
-  name: 'BoroBazar',
+  name: 'Kahf Mall',
   description:
     'Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS.',
   author: {
@@ -67,65 +67,38 @@ export const siteSettings = {
       //     },
       //   ],
       // },
-      {
-        id: 2,
-        path: '/search',
-        label: 'menu-categories',
-        subMenu: [
-          {
-            id: 1,
-            path: '/search',
-            label: 'menu-fresh-vegetables',
-          },
-          {
-            id: 2,
-            path: '/search',
-            label: 'menu-diet-nutrition',
-          },
-          {
-            id: 3,
-            path: '/search',
-            label: 'menu-healthy-foods',
-          },
-          {
-            id: 4,
-            path: '/search',
-            label: 'menu-grocery-items',
-          },
-          {
-            id: 5,
-            path: '/search',
-            label: 'menu-beaf-steak',
-          },
-        ],
-      },
-      {
-        id: 3,
-        path: '/search',
-        label: 'menu-dietary',
-        subMenu: [
-          {
-            id: 1,
-            path: '/search',
-            label: 'menu-vegetarian',
-          },
-          {
-            id: 2,
-            path: '/search',
-            label: 'menu-kakogenic',
-          },
-          {
-            id: 3,
-            path: '/search',
-            label: 'menu-mediterranean',
-          },
-          {
-            id: 4,
-            path: '/search',
-            label: 'menu-organic',
-          },
-        ],
-      },
+      // {
+      //   id: 2,
+      //   path: '/search',
+      //   label: 'menu-categories',
+      //   subMenu: [
+      //     {
+      //       id: 1,
+      //       path: '/search',
+      //       label: 'Makeup',
+      //     },
+      //     {
+      //       id: 2,
+      //       path: '/search',
+      //       label: 'menu-diet-nutrition',
+      //     },
+      //     {
+      //       id: 3,
+      //       path: '/search',
+      //       label: 'Skin care',
+      //     },
+      //     {
+      //       id: 4,
+      //       path: '/search',
+      //       label: 'Hair',
+      //     },
+      //     {
+      //       id: 5,
+      //       path: '/search',
+      //       label: 'Tooth and Brushes',
+      //     },
+      //   ],
+      // },
       {
         id: 4,
         path: '/search/',

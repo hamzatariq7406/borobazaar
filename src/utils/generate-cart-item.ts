@@ -20,18 +20,23 @@ interface Variation {
   quantity: number;
   [key: string]: unknown;
 }
-export function generateCartItem(item: Item, variation: Variation) {
-  const { id, name, slug, image, price, sale_price, quantity, unit } = item;
+export function generateCartItem(item: any, variation: any) {
+  const id = item.productId;
+  const name = item.displayName;
+  const slug = item.displayName;
+  const price = item?.currentSku?.listPrice;
+  const quantity = item.reviews;
+  const unit = "1 each";
   if (!isEmpty(variation)) {
     return {
       id: `${id}.${variation.id}`,
       productId: id,
-      name: `${name} - ${variation.title}`,
-      slug,
-      unit,
-      stock: variation.quantity,
-      price: variation.sale_price ? variation.sale_price : variation.price,
-      image: image?.thumbnail,
+      displayName: `${name} - ${variation.title}`,
+      slug:variation.displayName,
+      unit:"1 each",
+      stock: variation.reviews,
+      price: variation.currentSku.listPrice ? variation.currentSku.listPrice : variation.currentSku.listPrice,
+      image: variation.currentSku.heroImage,
       variationId: variation.id,
     };
   }
@@ -40,8 +45,8 @@ export function generateCartItem(item: Item, variation: Variation) {
     name,
     slug,
     unit,
-    image: image?.thumbnail,
+    image: item?.heroImage,
     stock: quantity,
-    price: sale_price ? sale_price : price,
+    price: price,
   };
 }

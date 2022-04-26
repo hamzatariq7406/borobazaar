@@ -72,14 +72,25 @@ export function inStock(items: Item[], id: Item['id']) {
   return false;
 }
 
-export const calculateItemTotals = (items: Item[]) =>
-  items.map((item) => ({
-    ...item,
-    itemTotal: item.price * item.quantity!,
-  }));
+export const calculateItemTotals = (items: any) => { 
+  return items.map((item:any) => {
+    const splittedString = item.price.split("$");
+    return ({
+      ...item,
+      itemTotal: parseInt(splittedString[1]) * item.quantity!,
+  })
+  })}
+  
 
-export const calculateTotal = (items: Item[]) =>
-  items.reduce((total, item) => total + item.quantity! * item.price, 0);
+export const calculateTotal = (items:any) =>{
+  let total = 0;
+  items.map((item:any) => {
+    const individualPrice = item.quantity! * parseInt(item.price.split("$")[1]);
+    total = total + individualPrice;
+  })
+  return total;
+}
+  
 
 export const calculateTotalItems = (items: Item[]) =>
   items.reduce((sum, item) => sum + item.quantity!, 0);

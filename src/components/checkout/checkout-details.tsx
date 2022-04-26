@@ -29,17 +29,7 @@ const data = [
     id: 4,
     title: 'text-payment-option',
     component: <StripeCheckoutInlineForm />,
-  },
-  {
-    id: 5,
-    title: 'text-delivery-instructions',
-    component: <DeliveryNotes />,
-  },
-  {
-    id: 6,
-    title: 'text-delivery-tip',
-    component: <DeliveryTips />,
-  },
+  }
 ];
 
 const CheckoutDetails: React.FC = () => {

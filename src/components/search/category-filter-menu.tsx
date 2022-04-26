@@ -26,16 +26,20 @@ function CategoryFilterMenuItem({
     [query?.category]
   );
   const isActive =
-    checkIsActive(selectedCategories, item.slug) ||
+    checkIsActive(selectedCategories, item.displayName) ||
     item?.children?.some((_item: any) =>
-      checkIsActive(selectedCategories, _item.slug)
+      checkIsActive(selectedCategories, _item.displayName)
     );
   const [isOpen, setOpen] = useState<boolean>(isActive);
   const [subItemAction, setSubItemAction] = useState<boolean>(false);
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  const { slug, name, children: items, icon } = item;
+
+  const items: any = [];
+  const slug = item.displayName;
+  const name = item.displayName;
+  const icon = item.thumbImage;
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -95,12 +99,12 @@ function CategoryFilterMenuItem({
             'flex items-center w-full text-start cursor-pointer group',
             { 'py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3': depth > 0 }
           )}
-          // onClick={handleChange}
+        // onClick={handleChange}
         >
           {icon && (
             <div className="inline-flex flex-shrink-0 2xl:w-12 2xl:h-12 3xl:w-auto 3xl:h-auto me-2.5 md:me-4 2xl:me-3 3xl:me-4">
-              <Image
-                src={icon ?? '/assets/placeholder/category-small.svg'}
+              <img
+                src={icon}
                 alt={name || t('text-category-thumbnail')}
                 width={40}
                 height={40}
@@ -110,10 +114,9 @@ function CategoryFilterMenuItem({
           <span className="text-skin-base capitalize py-0.5">{name}</span>
           {depth > 0 && (
             <span
-              className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-skin-four rounded-full ms-auto transition duration-500 ease-in-out group-hover:border-skin-yellow text-skin-inverted ${
-                selectedCategories.includes(slug) &&
+              className={`w-[22px] h-[22px] text-13px flex items-center justify-center border-2 border-skin-four rounded-full ms-auto transition duration-500 ease-in-out group-hover:border-skin-yellow text-skin-inverted ${selectedCategories.includes(slug) &&
                 'border-skin-yellow bg-skin-yellow'
-              }`}
+                }`}
             >
               {selectedCategories.includes(slug) && <FaCheck />}
             </span>
@@ -147,7 +150,7 @@ function CategoryFilterMenu({ items, className }: any) {
     <ul className={cn(className)}>
       {items?.map((item: any) => (
         <CategoryFilterMenuItem
-          key={`${item.slug}-key-${item.id}`}
+          key={`${item.displayName}-key-${item.categoryId}`}
           item={item}
         />
       ))}

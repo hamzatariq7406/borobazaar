@@ -11,12 +11,11 @@ export const CheckoutItem: React.FC<{ item: Item }> = ({ item }) => {
   return (
     <div className="flex py-4 items-center  border-b border-skin-base ">
       <div className="flex border rounded-md border-skin-base  w-16 h-16 flex-shrink-0">
-        <Image
+        <img
           src={item.image ?? '/assets/placeholder/order-product.svg'}
           alt={'item image'}
           className="rounded-md me-5"
-          width={64}
-          height={64}
+          style={{ width: 64, height: 64 }}
         />
       </div>
       <h6 className="text-15px text-skin-base font-normal ps-3">

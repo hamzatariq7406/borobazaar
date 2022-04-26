@@ -9,23 +9,40 @@ import { useCart } from '@contexts/cart/cart.context';
 import Seo from '@components/seo/seo';
 
 export default function Order() {
-  const { resetCart } = useCart();
+  const context: any = useCart();
+  let items: any = null;
+
+
+  if (typeof window !== 'undefined') {
+    if (context.items.length > 0) {
+      localStorage.setItem("items", JSON.stringify(context.items));
+      localStorage.setItem("total", context.total);
+    }
+  }
+
   useEffect(() => {
-    resetCart();
+    context.resetCart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+
   return (
     <>
-      <Seo
-        title="Order"
-        description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
-        path="complete-order"
-      />
-      <Divider />
-      <Container>
-        <OrderInformation />
-      </Container>
-      <Divider />
+      {typeof window !== 'undefined' ?
+        <div>
+          <Seo
+            title="Order"
+            description="Fastest E-commerce template built with React, NextJS, TypeScript, React-Query and Tailwind CSS."
+            path="complete-order"
+          />
+          <Divider />
+          <Container>
+            {/* @ts-ignore */}
+            <OrderInformation items={JSON.parse(localStorage.getItem("items"))} totals={localStorage.getItem("total")} />
+          </Container>
+          <Divider /></div>
+        : null}
     </>
   );
 }

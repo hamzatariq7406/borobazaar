@@ -9,7 +9,7 @@ interface ProductsProps {
   sectionSubHeading?: string;
   headingPosition?: 'left' | 'center';
   className?: string;
-  products?: Product[];
+  products?: any;
   loading: boolean;
   error?: string;
   limit?: number;

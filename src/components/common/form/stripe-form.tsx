@@ -78,7 +78,8 @@ const StripePaymentForm = ({
       amount: price
     }).then(() => {
       if (window.confirm("Order Placed !!!")) {
-        router.replace("/");
+        router.replace("/complete-order");
+        //router.replace("/");
       }
     }).catch(() => {
       alert("Payment is not Successful");
