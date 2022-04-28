@@ -4,11 +4,9 @@ import classes from './moving-banner.module.css';
 const MovingBanner = () => {
     return (
         <div className={classes.container}>
-            <div className={classes.photobanner}>       
-                <img className={classes.first} src="/assets/images/banner/banner-mobile-6.png" />
-                <img className={classes.img} src="/assets/images/banner/banner-10.png" />
-                <img className={classes.img} src="/assets/images/banner/banner-11.png" />
-                <img className={classes.img} src="/assets/images/banner/banner-8.png" />
+            <div className={classes.photobanner}>     
+            <img className={classes.first}  style={{width:"10%"}} src="/assets/images/banner/banner.jpg" />  
+                <img className={classes.img} style={{width:"10%"}} src="/assets/images/banner/cosmetic.jpg" />      
             </div>
         </div>
     )

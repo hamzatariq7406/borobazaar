@@ -35,8 +35,8 @@ const DownloadApps: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
   const { t } = useTranslation('common');
   return (
     <div className={cn('bg-skin-three overflow-hidden', className)}>
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-5 md:px-6 lg:px-16 xl:px-28 2xl:px-32 3xl:px-40 md:flex justify-between items-center">
-        <div className="flex-shrink-0 mx-auto md:ms-0 lg:flex lg:items-center pb-5 pt-1.5 md:pt-4 max-w-[350px] md:max-w-[340px] lg:max-w-[485px] xl:max-w-[540px] 2xl:max-w-[690px] 3xl:ps-10">
+      <div style={{background:'#65cad6'}} className="max-w-[1920px] mx-auto px-4 sm:px-5 md:px-6 lg:px-16 xl:px-28 2xl:px-32 3xl:px-40 md:flex justify-between items-center">
+        <div  className="flex-shrink-0 mx-auto md:ms-0 lg:flex lg:items-center pb-5 pt-1.5 md:pt-4 max-w-[350px] md:max-w-[340px] lg:max-w-[485px] xl:max-w-[540px] 2xl:max-w-[690px] 3xl:ps-10">
           <div className="py-8 xl:py-10 2xl:py-14 text-center md:text-start">
             <h2 className="text-[22px] md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-[42px] leading-9 lg:leading-[1.4em] xl:leading-[1.45em] text-skin-base font-bold font-manrope -tracking-[0.2px] mb-3 lg:mb-4">
               {t(title)}
@@ -51,7 +51,7 @@ const DownloadApps: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
                   href={item.slug}
                   className="inline-flex transition duration-200 ease-in hover:box-shadow hover:opacity-80"
                 >
-                  <Image
+                  <img
                     src={item.appButton}
                     alt={t(item.altText)}
                     className="w-36 lg:w-44 xl:w-auto rounded-md"
@@ -64,11 +64,10 @@ const DownloadApps: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
           </div>
         </div>
         <div className="hidden md:flex items-end ps-4 2xl:ps-0 md:max-w-[480px] lg:max-w-[540px] xl:max-w-auto -me-16 lg:-me-8 3xl:me-24">
-          <Image
-            src={appImage}
+          <img
+            src="https://thumbs.dreamstime.com/b/happy-beautiful-young-woman-blue-dress-hand-holding-shopping-bags-looking-light-banner-background-copy-space-169293438.jpg"
             alt={t('text-app-thumbnail')}
-            width={597}
-            height={500}
+            style={{width:597,height:500}}
           />
         </div>
       </div>

@@ -34,12 +34,10 @@ const BannerCard: React.FC<BannerProps> = ({
           classNameInner
         )}
       >
-        <Image
+        <img
           src={selectedImage.url}
-          width={selectedImage.width}
-          height={selectedImage.height}
+          style={{height:selectedImage.height,width:selectedImage.width}}
           alt={title}
-          quality={100}
           className={cn('bg-skin-thumbnail object-cover w-full', {
             'rounded-md': variant === 'rounded',
           })}

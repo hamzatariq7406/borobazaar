@@ -8,9 +8,9 @@ import { aboutSetting } from '@settings/about-setting';
 import Image from '@components/ui/image';
 import Seo from '@components/seo/seo';
 
-const backgroundThumbnail = '/assets/images/about-us.png';
-const aboutUs1 = '/assets/images/about-us/1.png';
-const aboutUs2 = '/assets/images/about-us/2.png';
+const backgroundThumbnail = 'https://thumbs.dreamstime.com/b/cosmetic-makeup-feminine-accessories-accessories-pink-flat-background-top-view-over-copy-space-promo-banner-cosmetic-makeup-194610582.jpg';
+const aboutUs1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSueHNAjS_nfRyD0W0lJAIyMxm0AZu3cPYPEw&usqp=CAU';
+const aboutUs2 = 'https://thumbs.dreamstime.com/b/thanksgiving-background-autumn-leaf-foliage-watercolor-web-banner-poster-e-commerce-line-cosmetics-shop-fashion-beauty-185381292.jpg';
 const aboutUs3 = '/assets/images/about-us/3.png';
 const aboutUs4 = '/assets/images/about-us/4.png';
 const aboutUs5 = '/assets/images/about-us/5.png';
@@ -46,19 +46,17 @@ export default function TermsPage() {
             />
 
             <div className="grid my-8 lg:my-14 grid-cols-2 gap-4">
-              <Image
+              <img
                 src={aboutUs1}
                 alt={t('text-map')}
                 className=" me-5"
-                width={576}
-                height={390}
+                style={{ width: 576, height: 390 }}
               />
-              <Image
+              <img
                 src={aboutUs2}
+                style={{ width: 576, height: 390 }}
                 alt={t('text-map')}
                 className=""
-                width={576}
-                height={390}
               />
             </div>
           </div>

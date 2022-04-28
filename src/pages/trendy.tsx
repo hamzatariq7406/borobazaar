@@ -38,7 +38,6 @@ export default function Home() {
         />
         <PopularProductFeed className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20 3xl:pb-2" />
       </Container>
-      <CollectionGrid headingPosition="center" />
       <DownloadApps />
     </>
   );
