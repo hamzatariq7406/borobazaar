@@ -8,16 +8,16 @@ type SearchProductProps = {
 };
 
 const SearchProduct: React.FC<SearchProductProps> = ({ item }) => {
+  console.log(item);
   return (
     <Link
       href={`${ROUTES.PRODUCT}/${item?.slug}`}
       className="group w-full h-auto flex justify-start items-center"
     >
       <div className="relative flex w-12 h-12 rounded-md overflow-hidden flex-shrink-0 cursor-pointer me-4">
-        <Image
-          src={item?.image?.thumbnail ?? searchProductPlaceholder}
-          width={48}
-          height={48}
+        <img
+          src={item?.heroImage ?? searchProductPlaceholder}
+          style={{width:48,height:48}}
           loading="eager"
           alt={item.name || 'Product Image'}
           className="bg-skin-thumbnail object-cover"
