@@ -7,20 +7,40 @@ import CartItem from './cart-item';
 import EmptyCart from './empty-cart';
 import Link from '@components/ui/link';
 import { ROUTES } from '@utils/routes';
+import LoginForm from '@components/auth/login-form';
 import cn from 'classnames';
 import { useTranslation } from 'next-i18next';
 import Heading from '@components/ui/heading';
 import Text from '@components/ui/text';
+import { useRouter } from 'next/router'
+import { useModalAction } from '@components/common/modal/modal.context';
 import DeleteIcon from '@components/icons/delete-icon';
 
 export default function Cart() {
   const { t } = useTranslation('common');
+  const router = useRouter();
   const { closeDrawer } = useUI();
+  const { openModal } = useModalAction();
+  let user: any = null;
+  if (localStorage.getItem("user")) {
+    user = JSON.parse(localStorage.getItem("user") || "");
+  }
   const { items, total, isEmpty, resetCart } = useCart();
   const { price: cartTotal } = usePrice({
     amount: total,
     currencyCode: 'USD',
   });
+
+  const clickHandler = () => {
+    if (user === null) {
+      openModal("LOGIN_VIEW");
+    } else if (isEmpty === false) {
+      router.push(ROUTES.CHECKOUT);
+    } else {
+      router.push("/");
+    }
+  }
+
   return (
     <div className="flex flex-col w-full h-full justify-between">
       <div className="w-full flex justify-between items-center relative ps-5 md:ps-7 border-b border-skin-base">
@@ -70,8 +90,10 @@ export default function Cart() {
           </div>
         </div>
         <div className="flex flex-col" onClick={closeDrawer}>
-          <Link
-            href={isEmpty === false ? ROUTES.CHECKOUT : '/'}
+          <button
+            onClick={clickHandler}
+            // href={user === null ? <LoginForm/>
+            //   : isEmpty === false ? ROUTES.CHECKOUT : '/'}
             className={cn(
               'w-full px-5 py-3 md:py-4 flex items-center justify-center bg-heading rounded font-semibold text-sm sm:text-15px text-skin-inverted bg-skin-primary focus:outline-none transition duration-300 hover:bg-opacity-90',
               {
@@ -81,7 +103,7 @@ export default function Cart() {
             )}
           >
             <span className="py-0.5">{t('text-proceed-to-checkout')}</span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

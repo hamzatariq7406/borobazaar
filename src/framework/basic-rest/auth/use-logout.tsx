@@ -20,6 +20,7 @@ export const useLogoutMutation = () => {
     onSuccess: (_data) => {
       Cookies.remove('auth_token');
       unauthorize();
+      localStorage.removeItem("user");
       Router.push('/');
     },
     onError: (data) => {

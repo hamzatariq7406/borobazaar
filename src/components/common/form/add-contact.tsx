@@ -2,11 +2,14 @@ import CloseButton from '@components/ui/close-button';
 import Input from '@components/ui/form/input';
 import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import {
   useModalState,
   useModalAction,
 } from '@components/common/modal/modal.context';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 interface ContactFormValues {
   title: string;
@@ -17,6 +20,7 @@ interface ContactFormValues {
 const AddContactForm: React.FC = () => {
   const { t } = useTranslation();
   const { data } = useModalState();
+  const router = useRouter();
   const { closeModal } = useModalAction();
   const {
     register,
@@ -31,7 +35,23 @@ const AddContactForm: React.FC = () => {
   });
 
   function onSubmit(values: ContactFormValues) {
-    console.log(values, 'Add Contact');
+    let user = null;
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user") || "")
+    }
+    axios.post("https://kahf-mall.herokuapp.com/api/contact/add-contact", {
+      title: values.title,
+      default: values.default,
+      number: values.number
+    }, {
+      headers: { Authorization: `Bearer ${user.token}` }
+    }).then(res => {
+      alert("Contact added successfully!!!");
+      router.reload();
+    }).catch(err => {
+      console.log(err.response.data)
+      alert(err?.response?.data?.message);
+    })
   }
 
   return (

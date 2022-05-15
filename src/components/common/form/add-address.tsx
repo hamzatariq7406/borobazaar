@@ -8,6 +8,8 @@ import CloseButton from '@components/ui/close-button';
 import Heading from '@components/ui/heading';
 import Map from '@components/ui/map';
 import { useTranslation } from 'next-i18next';
+import axios from 'axios';
+import Router from 'next/router';
 
 interface ContactFormValues {
   title: string;
@@ -24,7 +26,27 @@ const AddAddressForm: React.FC = () => {
   const { closeModal } = useModalAction();
 
   function onSubmit(values: ContactFormValues, e: any) {
-    console.log(values, 'Add Address');
+    let user: any = null;
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user") || "")
+    }
+
+    axios.post("https://kahf-mall.herokuapp.com/api/address/add-address", {
+      title: values.title,
+      default: true,
+      address: {
+        formatted_address: values.formatted_address
+      }
+    },{
+      headers: { Authorization: `Bearer ${user.token}` }
+    }).then(res => {
+      alert('address added successfully!!!');
+      closeModal();
+      Router.reload();
+    }).catch(err => {
+      console.log(err.response.data);
+      alert('error in adding address!!!');
+    })
   }
 
   const {
@@ -59,7 +81,7 @@ const AddAddressForm: React.FC = () => {
           />
         </div>
         <div className="grid grid-cols-1 mb-6 gap-7">
-          <Map
+          {/* <Map
             lat={data?.address?.lat || 1.295831}
             lng={data?.address?.lng || 103.76261}
             height={'420px'}
@@ -68,7 +90,7 @@ const AddAddressForm: React.FC = () => {
             mapCurrentPosition={(value: string) =>
               setValue('formatted_address', value)
             }
-          />
+          /> */}
           <TextArea
             label="Address"
             {...register('formatted_address', {

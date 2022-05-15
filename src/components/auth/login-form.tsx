@@ -3,6 +3,7 @@ import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
+import { useUI } from '@contexts/ui.context';
 import { useLoginMutation, LoginInputType } from '@framework/auth/use-login';
 import Logo from '@components/ui/logo';
 import { useTranslation } from 'next-i18next';
@@ -11,6 +12,7 @@ import { useModalAction } from '@components/common/modal/modal.context';
 import Switch from '@components/ui/switch';
 import CloseButton from '@components/ui/close-button';
 import { FaFacebook, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import axios from 'axios';
 import cn from 'classnames';
 
 interface LoginFormProps {
@@ -20,7 +22,9 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
   const { t } = useTranslation();
+  const { authorize } = useUI();
   const { closeModal, openModal } = useModalAction();
+  const [serverError, setServerError] = useState("");
   const { mutate: login, isLoading } = useLoginMutation();
   const [remember, setRemember] = useState(false);
 
@@ -31,13 +35,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
   } = useForm<LoginInputType>();
 
   function onSubmit({ email, password, remember_me }: LoginInputType) {
-    login({
+    axios.post("https://kahf-mall.herokuapp.com/api/users/signin", {
       email,
-      password,
-      remember_me,
-    });
-    closeModal();
-    console.log(email, password, remember_me, 'data');
+      password
+    }).then(res => {
+      localStorage.setItem("user", JSON.stringify(res.data));
+      authorize();
+      closeModal();
+    }).catch(err => {
+      setServerError(err.response?.data?.message);
+    })
   }
   function handelSocialLogin() {
     login({
@@ -150,15 +157,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
                 >
                   {t('common:text-sign-in')}
                 </Button>
+                <h2 style={{ color: 'red', fontSize: '1em' }}>{serverError}</h2>
               </div>
             </div>
           </form>
-          <div className="flex flex-col items-center justify-center relative text-sm">
+          {/* <div className="flex flex-col items-center justify-center relative text-sm">
             <span className="mt-6 text-sm text-skin-base opacity-70">
               {t('common:text-or')}
             </span>
-          </div>
-
+          </div> */}
+          {/* 
           <div className="flex justify-center mt-5 space-x-2.5">
             <button
               className="group flex items-center justify-center cursor-pointer h-10 w-10 rounded-full border border-skin-one hover:border-skin-primary transition-all focus:border-skin-primary focus:text-skin-primary focus:outline-none"
@@ -178,7 +186,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
             >
               <FaLinkedinIn className="h-4 w-4 text-skin-base text-opacity-50 transition-all group-hover:text-skin-primary" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

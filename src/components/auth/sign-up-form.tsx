@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useUI } from '@contexts/ui.context';
 import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
@@ -12,6 +13,7 @@ import { useModalAction } from '@components/common/modal/modal.context';
 import Switch from '@components/ui/switch';
 import CloseButton from '@components/ui/close-button';
 import cn from 'classnames';
+import axios from 'axios';
 import { ROUTES } from '@utils/routes';
 
 interface SignUpFormProps {
@@ -24,7 +26,10 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   className,
 }) => {
   const { t } = useTranslation();
+  const { authorize } = useUI();
   const { mutate: signUp, isLoading } = useSignUpMutation();
+  const [passwordMatchError, setPasswordMatchError] = useState("");
+  const [serverError, setServerError] = useState("");
   const { closeModal, openModal } = useModalAction();
   const [remember, setRemember] = useState(false);
   const {
@@ -39,14 +44,27 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   function handleForgetPassword() {
     return openModal('FORGET_PASSWORD');
   }
-  function onSubmit({ name, email, password, remember_me }: SignUpInputType) {
-    signUp({
-      name,
-      email,
-      password,
-      remember_me,
-    });
-    console.log(name, email, password, 'sign form values');
+  function onSubmit({ name, email, password, remember_me, confirmPassword }: SignUpInputType) {
+    if (password !== confirmPassword) {
+      setPasswordMatchError("Password does not matched");
+    } else {
+      axios.post("https://kahf-mall.herokuapp.com/api/users/register", {
+        name,
+        email,
+        password
+      }).then(res => {
+        localStorage.setItem("user", JSON.stringify(res.data));
+        authorize();
+        closeModal();
+      }).catch(err => {
+        if(err?.response?.data?.message.substring(0,6) === "E11000"){
+          setServerError("User Already Exists with this email")
+        } else {
+          setServerError(err?.response?.data?.message);
+        }       
+      })
+    }
+
   }
   return (
     <div
@@ -62,7 +80,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
             src="/assets/images/registration.png"
             alt="sign up"
             width={800}
-            height={620}
+            height={750}
             className="w-full"
           />
         </div>
@@ -121,6 +139,15 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                   required: `${t('forms:password-required')}`,
                 })}
               />
+
+              <PasswordInput
+                label={'Confirm Password'}
+                error={passwordMatchError}
+                {...register('confirmPassword', {
+                  required: `${t('forms:password-required')}`,
+                })}
+              />
+
               <div className="flex items-center justify-center">
                 <div className="flex items-center flex-shrink-0">
                   <label className="switch relative inline-block w-10 cursor-pointer">
@@ -153,7 +180,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                 >
                   {t('common:text-register')}
                 </Button>
+                <h2 style={{ color: 'red', fontSize: '1em' }}>{serverError}</h2>
               </div>
+
             </div>
           </form>
         </div>

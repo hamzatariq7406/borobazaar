@@ -2,21 +2,8 @@
   {
       "brandName": "Koh Gen Do",
       "currentSku": {
-          "imageAltText": "Koh Gen Do - Cleansing Spa Water Cloths",
-          "isAppExclusive": false,
-          "isBI": false,
-          "isBest": false,
-          "isFirstAccess": false,
-          "isLimitedEdition": false,
-          "isLimitedTimeOffer": false,
-          "isNatural": false,
-          "isNew": false,
-          "isOnlineOnly": false,
-          "isOrganic": false,
-          "isSephoraExclusive": false,
           "listPrice": "$23.00 - $72.00",
           "salePrice": "",
-          "skuId": "1361096",
           "skuImages": {
               "image135": "https://www.sephora.com/productimages/sku/s1361096-main-grid.jpg",
               "image162": "https://www.sephora.com/productimages/sku/s1361096-162.jpg",
@@ -25,17 +12,12 @@
               "image450": "https://www.sephora.com/productimages/sku/s1361096-main-Lhero.jpg",
               "image62": "https://www.sephora.com/productimages/sku/s1361096-main-Lthumb.jpg",
               "image97": "https://www.sephora.com/productimages/sku/s1361096-main-Sgrid.jpg"
-          },
-          "skuType": "Standard"
+          }
       },
       "displayName": "Cleansing Spa Water Cloths",
       "heroImage": "https://www.sephora.com/productimages/sku/s1361096-main-grid.jpg",
-      "image135": "https://www.sephora.com/productimages/sku/s1361096-main-grid.jpg",
-      "image250": "https://www.sephora.com/productimages/sku/s1361096-main-hero.jpg",
-      "image450": "https://www.sephora.com/productimages/sku/s1361096-main-Lhero.jpg",
       "productId": "P294018",
       "productName": "Cleansing Spa Water Cloths",
-      "rating": "4.5035",
       "reviews": "282",
       "targetUrl": "/product/cleansing-spa-water-cloths-P294018"
   },

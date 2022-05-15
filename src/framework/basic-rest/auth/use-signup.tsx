@@ -6,6 +6,7 @@ export interface SignUpInputType {
   email: string;
   password: string;
   name: string;
+  confirmPassword:string;
   remember_me: boolean;
 }
 async function signUp(input: SignUpInputType) {
