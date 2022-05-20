@@ -15,7 +15,7 @@ import CloseButton from '@components/ui/close-button';
 import cn from 'classnames';
 import axios from 'axios';
 import { ROUTES } from '@utils/routes';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 interface SignUpFormProps {
     isPopup?: boolean;
@@ -33,6 +33,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
     const [serverError, setServerError] = useState("");
     const { closeModal, openModal } = useModalAction();
     const [remember, setRemember] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState("");
     const {
         register,
         handleSubmit,
@@ -45,7 +46,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
     function handleForgetPassword() {
         return openModal('FORGET_PASSWORD');
     }
-    function onSubmit({ productName, tags, listPrice, salePrice, mainImage, otherImage1, otherImage2, quantity, description, category }: SignUpInputType) {
+    function onSubmit({ productName, tags, listPrice, salePrice, mainImage, otherImage1, otherImage2, quantity, description, category, subCategory }: SignUpInputType) {
         let user = null;
         if (localStorage.getItem("user")) {
             user = JSON.parse(localStorage.getItem("user") || "")
@@ -59,7 +60,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
             heroImage: mainImage,
             listPrice: listPrice,
             salePrice: salePrice,
-            quantity: quantity
+            quantity: quantity,
+            subCategory: subCategory
         }, {
             headers: { Authorization: `Bearer ${user.token}` }
         }).then(res => {
@@ -68,8 +70,34 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
         }).catch(err => {
             setServerError(err?.response?.data?.message);
         })
-
     }
+
+    const categoryList = [
+        "Home & Kitchen",
+        "Pet Supplies",
+        "Sports & Outdoors",
+        "Baby Products",
+        "Toys & Games",
+        "Stationery & Office Supplies",
+        "Patio,Lawn & Garden",
+        "Tools & Home Improvements",
+        "Gadgets",
+        "Accessories"
+    ];
+
+    const subCategories: any = {
+        "Home & Kitchen": ["Kitchen", "Bed & Bath", "Home Improvements"],
+        "Pet Supplies": ["Birds", "Cats & Dogs", "Fist & Aquatic Pets"],
+        "Sports & Outdoors": ["Boating and Fishing", "Cycling", "Camping & Hiking", "Climbing", "Exercises & Fitness", "Water Sports"],
+        "Baby Products": ['Baby & Care Safety', "Feeding", "Baby Gifts", "Travel Gears"],
+        "Toys & Games": [],
+        "Stationery & Office Supplies": ["Stationery Items", "Office Supplies"],
+        "Patio,Lawn & Garden": [],
+        "Tools & Home Improvements": ["Kitchen and Bath Fixtures", "Power & Hand Tools", "Safety and Security", "Tool Organizers", "Lighting"],
+        "Gadgets": ["Watches (Men & Women)", "Sunglasses (Men & Women)"],
+        "Accessories": ["Computer Accessories", "Headphone Accessories", "Laptop Accessories", "Charges", "Headphone", "Headphone Cases"]
+    }
+
     return (
         <div
             className={cn(
@@ -77,7 +105,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                 className
             )}
         >
-            {isPopup === true && <CloseButton onClick={closeModal} />}
+            {/* {isPopup === true && <CloseButton onClick={closeModal} />} */}
             <div className="flex bg-skin-fill mx-auto rounded-lg overflow-hidden w-full">
                 {/* <div className="md:w-[55%] xl:w-[60%] registration hidden md:block">
           <Image
@@ -90,9 +118,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
         </div> */}
                 <div className="w-full md:w-[100%] xl:w-[100%] py-6 sm:py-10 px-4 sm:px-8 lg:px-12  rounded-md shadow-dropDown flex flex-col justify-center">
                     <div className="text-center mb-6 pt-2.5">
-                        <div onClick={closeModal}>
+                        {/* <div onClick={closeModal}>
                             <Logo />
-                        </div>
+                        </div> */}
                         <h4 className="text-skin-base font-semibold text-xl sm:text-2xl  sm:pt-3 ">
                             {"Add Products"}
                         </h4>
@@ -109,6 +137,35 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                                 variant="solid"
                                 {...register('productName')}
                             />
+                            <Input
+                                label={'Category'}
+                                type="text"
+                                list="data"
+                                variant="solid"
+                                {...register('category')}
+                                onChange={(e) => {
+                                    setSelectedCategory(e.currentTarget.value);
+                                }}
+                            />
+
+                            <datalist id="data">
+                                {categoryList.map((item, key) =>
+                                    <option key={key} value={item} />
+                                )}
+                            </datalist>
+
+                            <Input
+                                label={'Sub Category'}
+                                type="text"
+                                list="subcategory"
+                                variant="solid"
+                                {...register('subCategory')}
+                            />
+                            <datalist id="subcategory">
+                                {subCategories[selectedCategory]?.map((item: any, key: any) =>
+                                    <option key={key} value={item} />
+                                )}
+                            </datalist>
                             <Input
                                 label={'Tags'}
                                 type="text"
@@ -156,12 +213,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
                                 type="text"
                                 variant="solid"
                                 {...register('description')}
-                            />
-                            <Input
-                                label={'Category'}
-                                type="text"
-                                variant="solid"
-                                {...register('category')}
                             />
 
                             <div className="relative">

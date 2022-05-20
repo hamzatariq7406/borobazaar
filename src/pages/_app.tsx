@@ -20,6 +20,7 @@ import '@styles/swiper-carousel.css';
 import '@styles/custom-plugins.css';
 import '@styles/tailwind.css';
 import { getDirection } from '@utils/get-direction';
+import axios from 'axios';
 
 const Noop: React.FC = ({ children }) => <>{children}</>;
 

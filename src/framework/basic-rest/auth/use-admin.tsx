@@ -12,6 +12,7 @@ export interface SignUpInputType {
     otherImage1: string;
     otherImage2: string;
     description: string;
-    category: string
+    category: string;
+    subCategory:string;
 }
 
