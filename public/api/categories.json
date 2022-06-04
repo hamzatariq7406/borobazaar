@@ -2,7 +2,7 @@
     "rootCategories": [
         {
             "categoryId": "cat140006",
-            "displayName": "Makeup",
+            "displayName": "Home & Kitchen",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
             "megaNavMarketingBanner": [
@@ -13,7 +13,7 @@
                     "enableTesting": false,
                     "height": "404",
                     "imageId": "7040044",
-                    "imagePath": "/assets/images/category/makeup.svg",
+                    "imagePath": "/assets/images/category/kitchen.png",
                     "name": "meganav_shopcategory_makeup_pmg_image",
                     "styleList": {
                         "BOTTOM_PADDING": ""
@@ -21,14 +21,31 @@
                     "width": "221"
                 }
             ],
-            "selectedThumbImage": "/assets/images/category/makeup.svg",
+            "children": [
+                {
+                  "id": 1,
+                  "displayName": "Kitchen",
+                  "slug": "arugula"
+                },
+                {
+                  "id": 2,
+                  "displayName": "Bed & Bath",
+                  "slug": "asparagus"
+                },
+                {
+                  "id": 3,
+                  "displayName": "Home Improvements",
+                  "slug": "beets"
+                }
+              ],
+            "selectedThumbImage": "/assets/images/category/kitchen.png",
             "showInAppJaBsDropdown": true,
             "targetUrl": "/shop/makeup-cosmetics",
-            "thumbImage": "/assets/images/category/makeup.svg"
+            "thumbImage": "/assets/images/category/kitchen.png"
         },
         {
             "categoryId": "cat150006",
-            "displayName": "Skincare",
+            "displayName": "Pet Supplies",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
             "megaNavMarketingBanner": [
@@ -47,14 +64,31 @@
                     "width": "221"
                 }
             ],
+            "children": [
+                {
+                  "id": 1,
+                  "displayName": "Birds",
+                  "slug": "arugula"
+                },
+                {
+                  "id": 2,
+                  "displayName": "Cats & Dogs",
+                  "slug": "asparagus"
+                },
+                {
+                  "id": 3,
+                  "displayName": "Fist & Aquatic Pets",
+                  "slug": "beets"
+                }
+              ],
             "selectedThumbImage": "/assets/images/category/skincare.svg",
             "showInAppJaBsDropdown": true,
             "targetUrl": "/shop/skincare",
-            "thumbImage": "/assets/images/category/skincare.svg"
+            "thumbImage": "/assets/images/category/pet-supplies.png"
         },
         {
             "categoryId": "cat130038",
-            "displayName": "Hair",
+            "displayName": "Sports & Outdoors",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
             "megaNavMarketingBanner": [
@@ -73,14 +107,46 @@
                     "width": "221"
                 }
             ],
+            "children": [
+                {
+                  "id": 1,
+                  "displayName": "Boating and Fishing",
+                  "slug": "arugula"
+                },
+                {
+                  "id": 2,
+                  "displayName": "Cycling",
+                  "slug": "asparagus"
+                },
+                {
+                  "id": 3,
+                  "displayName": "Camping & Hiking",
+                  "slug": "beets"
+                },
+                {
+                    "id": 4,
+                    "displayName": "Climbing",
+                    "slug": "beets"
+                  },
+                  {
+                    "id": 5,
+                    "displayName": "Exercises & Fitness",
+                    "slug": "beets"
+                  },
+                  {
+                    "id": 6,
+                    "displayName": "Water Sports",
+                    "slug": "beets"
+                  }
+              ],
             "selectedThumbImage": "/assets/images/category/hair.svg",
             "showInAppJaBsDropdown": true,
             "targetUrl": "/shop/hair-products",
-            "thumbImage": "/assets/images/category/hair.svg"
+            "thumbImage": "/assets/images/category/sport.png"
         },
         {
             "categoryId": "cat130042",
-            "displayName": "Brushes",
+            "displayName": "Baby Products",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
             "megaNavMarketingBanner": [
@@ -96,14 +162,36 @@
                     "width": "221"
                 }
             ],
+            "children": [
+                {
+                  "id": 1,
+                  "displayName": "Baby & Care Safety",
+                  "slug": "arugula"
+                },
+                {
+                  "id": 2,
+                  "displayName": "Feeding",
+                  "slug": "asparagus"
+                },
+                {
+                  "id": 3,
+                  "displayName": "Baby Gifts",
+                  "slug": "beets"
+                },
+                {
+                    "id": 4,
+                    "displayName": "Travel Gears",
+                    "slug": "beets"
+                  }
+              ],
             "selectedThumbImage": "/assets/images/category/brushes.svg",
             "showInAppJaBsDropdown": true,
             "targetUrl": "/shop/makeup-tools",
-            "thumbImage": "/assets/images/category/brushes.svg"
+            "thumbImage": "/assets/images/category/baby-products.png"
         },
         {
             "categoryId": "cat160006",
-            "displayName": "Fragrance",
+            "displayName": "Toys & Games",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
             "megaNavMarketingBanner": [
@@ -122,17 +210,29 @@
             "selectedThumbImage": "/assets/images/category/perfume.svg",
             "showInAppJaBsDropdown": true,
             "targetUrl": "/shop/fragrance",
-            "thumbImage": "/assets/images/category/perfume.svg"
+            "thumbImage": "/assets/images/category/box.png"
         },
         {
             "categoryId": "cat140014",
-            "displayName": "Bath",
+            "displayName": "Stationery & Office Supplies",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
             "altText": "BATH & BODY GIFTS >",
             "componentName": "Sephora Unified Image Component",
             "componentType": 53,
             "enableTesting": false,
+            "children": [
+                {
+                  "id": 1,
+                  "displayName": "Stationery Items",
+                  "slug": "arugula"
+                },
+                {
+                  "id": 2,
+                  "displayName": "Office Supplies",
+                  "slug": "asparagus"
+                }
+              ],
             "height": "202",
             "imageId": "6000297",
             "imagePath": "/assets/images/category/bath.svg",
@@ -141,11 +241,11 @@
             "selectedThumbImage": "/assets/images/category/bath.svg",
             "showInAppJaBsDropdown": true,
             "targetUrl": "/shop/bath-body",
-            "thumbImage": "/assets/images/category/bath.svg"
+            "thumbImage": "/assets/images/category/stationery.png"
         },
         {
             "categoryId": "cat60270",
-            "displayName": "Gifts",
+            "displayName": "Patio,Lawn & Garden",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
                     "altText": "Gift Cards Sephora Gift Cards",
@@ -164,11 +264,61 @@
             "selectedThumbImage": "/assets/images/category/gifts.svg",
             "showInAppJaBsDropdown": false,
             "targetUrl": "/shop/gifts",
-            "thumbImage": "/assets/images/category/gifts.svg"
+            "thumbImage": "/assets/images/category/paving.png"
         },
         {
             "categoryId": "cat130044",
-            "displayName": "Men",
+            "displayName": "Tools & Home Improvements",
+            "hasChildCategories": true,
+            "hasDropdownMenu": true,
+                
+                    "altText": "TOP SCENTS FOR HIM >",
+                    "componentName": "Sephora Unified Image Component",
+                    "componentType": 53,
+                    "enableTesting": false,
+                    "height": "202",
+                    "imageId": "6000312",
+                    "imagePath": "/assets/images/category/men.svg",
+                    "name": "meganav_shopcategory_men_topscents_med_image",
+                    "styleList": {
+                        "TOP_PADDING": ""
+                    },
+                    "children": [
+                        {
+                          "id": 1,
+                          "displayName": "Kitchen and Bath Fixtures",
+                          "slug": "arugula"
+                        },
+                        {
+                          "id": 2,
+                          "displayName": "Power & Hand Tools",
+                          "slug": "asparagus"
+                        },
+                        {
+                          "id": 3,
+                          "displayName": "Safety and Security",
+                          "slug": "beets"
+                        },
+                        {
+                            "id": 4,
+                            "displayName": "Tool Organizers",
+                            "slug": "beets"
+                          },
+                          {
+                            "id": 5,
+                            "displayName": "Lighting",
+                            "slug": "beets"
+                          }
+                      ],
+                    "width": "233",
+            "selectedThumbImage": "/assets/images/category/men.svg",
+            "showInAppJaBsDropdown": false,
+            "targetUrl": "/shop/men",
+            "thumbImage": "/assets/images/category/tool-box.png"
+        },
+        {
+            "categoryId": "cat130044",
+            "displayName": "Gadgets",
             "hasChildCategories": true,
             "hasDropdownMenu": true,
                 
@@ -184,10 +334,77 @@
                         "TOP_PADDING": ""
                     },
                     "width": "233",
+                    "children": [
+                        {
+                          "id": 1,
+                          "displayName": "Watches (Men & Women)",
+                          "slug": "arugula"
+                        },
+                        {
+                          "id": 2,
+                          "displayName": "Sunglasses (Men & Women)",
+                          "slug": "asparagus"
+                        }
+                      ],
             "selectedThumbImage": "/assets/images/category/men.svg",
             "showInAppJaBsDropdown": false,
             "targetUrl": "/shop/men",
-            "thumbImage": "/assets/images/category/men.svg"
+            "thumbImage": "/assets/images/category/gadget.png"
+        },
+        {
+            "categoryId": "cat130044",
+            "displayName": "Accessories",
+            "hasChildCategories": true,
+            "hasDropdownMenu": true,
+                
+                    "altText": "TOP SCENTS FOR HIM >",
+                    "componentName": "Sephora Unified Image Component",
+                    "componentType": 53,
+                    "enableTesting": false,
+                    "height": "202",
+                    "imageId": "6000312",
+                    "imagePath": "/assets/images/category/men.svg",
+                    "name": "meganav_shopcategory_men_topscents_med_image",
+                    "styleList": {
+                        "TOP_PADDING": ""
+                    },
+                    "children": [
+                        {
+                          "id": 1,
+                          "displayName": "Computer Accessories",
+                          "slug": "arugula"
+                        },
+                        {
+                          "id": 2,
+                          "displayName": "Headphone Accessories",
+                          "slug": "asparagus"
+                        },
+                        {
+                          "id": 3,
+                          "displayName": "Laptop Accessories",
+                          "slug": "beets"
+                        },
+                        {
+                            "id": 4,
+                            "displayName": "Charges",
+                            "slug": "beets"
+                          },
+                          {
+                            "id": 5,
+                            "displayName": "Headphone",
+                            "slug": "beets"
+                          },
+                          {
+                            "id": 6,
+                            "displayName": "Headphone Cases",
+                            "slug": "beets"
+                          }
+                      ],
+                    "width": "233",
+            "selectedThumbImage": "/assets/images/category/men.svg",
+            "showInAppJaBsDropdown": false,
+            "targetUrl": "/shop/men",
+            "thumbImage": "/assets/images/category/adapter.png"
         }
     ]
 }

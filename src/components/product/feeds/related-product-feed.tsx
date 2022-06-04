@@ -4,6 +4,7 @@ import { LIMITS } from '@framework/utils/limits';
 
 interface RelatedProductsProps {
   carouselBreakpoint?: {} | any;
+  subCategory: any;
   className?: string;
   uniqueKey?: string;
 }
@@ -11,11 +12,14 @@ interface RelatedProductsProps {
 const RelatedProductFeed: React.FC<RelatedProductsProps> = ({
   carouselBreakpoint,
   className,
+  subCategory,
   uniqueKey = 'related-product-popup',
 }) => {
   const { data, isLoading, error } = useRelatedProductsQuery({
     limit: LIMITS.RELATED_PRODUCTS_LIMITS,
+    category: subCategory
   });
+
   return (
     <ProductsCarousel
       sectionHeading="text-related-products"

@@ -4,13 +4,15 @@ import cn from 'classnames';
 import Layout from '@components/layout/layout';
 import { useTranslation } from 'next-i18next';
 
-const deliveryDateSchedule = [
-  'Sat, Jul 03, 2021',
-  'Sun, Jul 04, 2021',
-  'Mon, Jul 05, 2021',
-  'Tus, Jul 06, 2021',
-  'Wed, Jul 07 ,2021 ',
-];
+let deliveryDateSchedule: any = [];
+
+for (let i = 0; i < 5; i++) {
+  const someDate = new Date(Date.now());
+  deliveryDateSchedule[i] = new Date(someDate.setDate(someDate.getDate() + i))
+    .toLocaleDateString('en-us', { weekday: "short", year: "numeric", month: "short", day: "numeric" })
+}
+
+
 const deliveryTimeSchedule = ['9am to 10am', '3pm to 5pm', '6pm to 8pm'];
 
 export default function Schedule() {
@@ -26,6 +28,10 @@ export default function Schedule() {
     return month[1];
   }
 
+  if(typeof localStorage !== "undefined"){
+    localStorage.setItem("deliveredAt", dateSchedule);
+  }
+  
   return (
     <div className="w-full">
       <div className="w-full  mx-auto">
@@ -34,7 +40,7 @@ export default function Schedule() {
             {t('text-delivery-schedule')}
           </RadioGroup.Label>
           <div className="grid gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
-            {deliveryDateSchedule.map((date) => (
+            {deliveryDateSchedule.map((date:any) => (
               <RadioGroup.Option
                 key={date}
                 value={date}
@@ -51,17 +57,15 @@ export default function Schedule() {
                   <div className="text-center">
                     <RadioGroup.Label
                       as="p"
-                      className={`text-base font-semibold  ${
-                        checked ? 'text-skin-inverted' : 'text-gray-900'
-                      }`}
+                      className={`text-base font-semibold  ${checked ? 'text-skin-inverted' : 'text-gray-900'
+                        }`}
                     >
                       {getDay(date)}
                     </RadioGroup.Label>
                     <RadioGroup.Description
                       as="span"
-                      className={`text-15px ${
-                        checked ? 'text-skin-inverted' : 'text-gray-500'
-                      }`}
+                      className={`text-15px ${checked ? 'text-skin-inverted' : 'text-gray-500'
+                        }`}
                     >
                       {getMonth(date)}
                     </RadioGroup.Description>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Layout from '@components/layout/layout-two';
 import Container from '@components/ui/container';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -21,9 +22,11 @@ import { fetchCategories } from '@framework/category/get-all-categories';
 import { fetchBestSellerGroceryProducts } from '@framework/product/get-all-best-seller-grocery-products';
 import { fetchPopularProducts } from '@framework/product/get-all-popular-products';
 import { LIMITS } from '@framework/utils/limits';
+import axios from 'axios';
 import Trendy from './trendy';
 
 export default function Home() {
+
   return (
     <>
       <Trendy />

@@ -10,8 +10,8 @@ type PaginatedProduct = {
 const fetchProducts = async ({ queryKey }: any) => {
   const pathName = queryKey[1].category;
   const [_key, _params] = queryKey;
-  
-  const { data } = await http.get(`/${pathName}.json`);
+
+  const { data } = await http.post(`https://kahf-mall.herokuapp.com/api/products/product-by-subcategory`, { category: _params.category });
   return {
     data: shuffle(data) as Product[],
     paginatorInfo: {
@@ -24,9 +24,9 @@ const useProductsQuery = (options: QueryOptionsType) => {
   return useInfiniteQuery<PaginatedProduct, Error>(
     [API_ENDPOINTS.PRODUCTS, options],
     fetchProducts,
-    {
-      getNextPageParam: ({ paginatorInfo }) => paginatorInfo.nextPageUrl,
-    }
+    // {
+    //   getNextPageParam: ({ paginatorInfo }) => paginatorInfo.nextPageUrl,
+    // }
   );
 };
 

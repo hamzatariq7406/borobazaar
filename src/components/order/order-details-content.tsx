@@ -9,12 +9,10 @@ export const OrderDetailsContent: React.FC<{ item?: any }> = ({ item }) => {
   return (
     <div className="relative grid grid-cols-12 py-2 pb-0 border-b border-solid border-skin-base text-[12px] md:text-[14px]">
       <div className="col-span-2 self-center">
-        <Image
-          src={item.image.thumbnail}
+        <img
+          src={item.image}
+          style={{width:60,height:60}}
           alt={item?.name || 'Product Image'}
-          width="60"
-          height="60"
-          quality={100}
           className="object-cover"
         />
       </div>
@@ -25,7 +23,7 @@ export const OrderDetailsContent: React.FC<{ item?: any }> = ({ item }) => {
         {typeof item.quantity === 'number' && <p>{item.quantity}x</p>}
       </div>
       <div className="col-span-2 self-center">
-        {typeof item.price === 'number' && <p>{price}</p>}
+        {<p>{item.price}</p>}
       </div>
     </div>
   );

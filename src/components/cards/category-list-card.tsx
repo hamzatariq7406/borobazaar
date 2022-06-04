@@ -21,6 +21,8 @@ const CategoryListCard: React.FC<Props> = ({
 }) => {
   const name = category.displayName;
   const icon = category.thumbImage;
+  const items = category.children;
+
   const { t } = useTranslation('common');
 
   return (
@@ -54,6 +56,34 @@ const CategoryListCard: React.FC<Props> = ({
             {name}
           </h3>
         </div>
+
+        {
+          items ? <div className="flex items-center transition-all transform group-hover:translate-x-1">
+            <IoIosArrowForward className="text-base text-skin-base text-opacity-40" />
+          </div> : null
+        }
+
+        {Array.isArray(items) ? (
+          <div className="hidden md:block absolute z-10 left-full top-0 w-full h-full bg-skin-fill border border-skin-base rounded-md opacity-0 invisible">
+            <ul key="content" className="text-xs py-1.5">
+              {items?.map((currentItem) => {
+                <a href="#">{currentItem.name}</a>
+                // const childDepth = depth + 1;
+                // return (
+                //   <SidebarMenuItem
+                //     key={`${currentItem.name}${currentItem.slug}`}
+                //     item={currentItem}
+                //     depth={childDepth}
+                //     className={cn(
+                //       'text-sm px-3 py-3 pe-4 text-skin-muted hover:text-skin-primary border-b border-skin-base last:border-b-0 mb-0.5'
+                //     )}
+                //   />
+                // );
+              })}
+            </ul>
+          </div>
+        ) : null}
+
       </a>
     </Link>
   );

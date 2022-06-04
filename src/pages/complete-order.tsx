@@ -7,6 +7,7 @@ import Divider from '@components/ui/divider';
 import { useEffect } from 'react';
 import { useCart } from '@contexts/cart/cart.context';
 import Seo from '@components/seo/seo';
+import axios from 'axios';
 
 export default function Order() {
   const context: any = useCart();
@@ -22,6 +23,32 @@ export default function Order() {
 
   useEffect(() => {
     context.resetCart();
+    let user = null;
+    let address = null;
+    let deliveredAt = null;
+    if (localStorage.getItem("user")) {
+      user = JSON.parse(localStorage.getItem("user") || "")
+      address = localStorage.getItem("address");
+      deliveredAt = localStorage.getItem("deliveredAt");
+    }
+
+
+    axios.post("https://kahf-mall.herokuapp.com/api/orders", {
+      orderItems: JSON.parse(localStorage.getItem("items") || ""),
+      totalPrice: localStorage.getItem("total"),
+      isPaid: true,
+      address: address,
+      isDelivered: false,
+      deliveredAt: deliveredAt,
+      paidAt: Date.now()
+    }, {
+      headers: { Authorization: `Bearer ${user.token}` }
+    }).then(res => {
+      console.log("Order Placed");
+    }).catch(err => {
+      alert(err?.response?.data?.message);
+    })
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

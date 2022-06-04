@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useUI } from '@contexts/ui.context';
 import Input from '@components/ui/form/input';
+import Cookies from 'js-cookie';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
@@ -54,6 +55,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
         password
       }).then(res => {
         localStorage.setItem("user", JSON.stringify(res.data));
+        Cookies.set('auth_token',"some_token");
         authorize();
         closeModal();
       }).catch(err => {

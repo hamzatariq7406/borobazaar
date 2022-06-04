@@ -3,6 +3,7 @@ import Input from '@components/ui/form/input';
 import PasswordInput from '@components/ui/form/password-input';
 import Button from '@components/ui/button';
 import { useForm } from 'react-hook-form';
+import Cookies from 'js-cookie';
 import { useUI } from '@contexts/ui.context';
 import { useLoginMutation, LoginInputType } from '@framework/auth/use-login';
 import Logo from '@components/ui/logo';
@@ -40,6 +41,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
       password
     }).then(res => {
       localStorage.setItem("user", JSON.stringify(res.data));
+      Cookies.set('auth_token',"some_token");
       authorize();
       closeModal();
     }).catch(err => {

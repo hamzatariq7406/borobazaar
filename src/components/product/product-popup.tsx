@@ -67,9 +67,10 @@ export default function ProductPopup() {
   const [addToWishlistLoader, setAddToWishlistLoader] =
     useState<boolean>(false);
   const [shareButtonStatus, setShareButtonStatus] = useState<boolean>(false);
+
   const { price, basePrice, discount } = usePrice({
-    amount: data.sale_price ? data.sale_price : data.price,
-    baseAmount: data.price,
+    amount: data.salePrice ? data.salePrice : data.listPrice,
+    baseAmount: data.listPrice,
     currencyCode: 'USD',
   });
 
@@ -84,9 +85,9 @@ export default function ProductPopup() {
     name: data.brandName,
     slug: data.brandName
   }];
-  const gallery = data.currentSku?.skuImages;
-  const description = data.currentSku?.imageAltText;
-  const quantity = data.reviews;
+  const gallery = data.images;
+  const description = data.description;
+  const quantity = data.quantity;
 
   const productUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${ROUTES.PRODUCT}/${slug}`;
   const handleChange = () => {
@@ -116,7 +117,7 @@ export default function ProductPopup() {
     setTimeout(() => {
       setAddToCartLoader(false);
     }, 1500);
-    
+
     addItemToCart(item, selectedQuantity);
     toast(t('text-added-bag'), {
       progressClassName: 'fancy-progress-bar',
@@ -161,7 +162,7 @@ export default function ProductPopup() {
         <div className="px-4 md:px-6 lg:p-8 2xl:p-10 mb-9 lg:mb-2 pt-4 md:pt-7 2xl:pt-10">
           <div className="lg:flex items-start justify-between">
             <div className="xl:flex items-center justify-center overflow-hidden mb-6 md:mb-8 lg:mb-0">
-              {Object.keys(gallery).length > 0 ? (
+              {data.images.length > 0 ? (
                 <ThumbnailCarousel gallery={gallery} />
               ) : (
                 <div className="w-auto flex items-center justify-center">
@@ -345,6 +346,7 @@ export default function ProductPopup() {
           </div>
         </div>
         <RelatedProductFeed
+          subCategory={data.subCategory}
           carouselBreakpoint={breakpoints}
           className="mb-0.5 md:mb-2 lg:mb-3.5 xl:mb-4 2xl:mb-6"
         />

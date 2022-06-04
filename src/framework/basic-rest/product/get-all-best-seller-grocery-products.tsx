@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 
 export const fetchBestSellerGroceryProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.get(API_ENDPOINTS.BEST_SELLER_GROCERY_PRODUCTS);
+  const { data } = await http.get("https://kahf-mall.herokuapp.com/api/products/best-seller-products");
   return data as Product[];
 };
 export const useBestSellerGroceryProductsQuery = (

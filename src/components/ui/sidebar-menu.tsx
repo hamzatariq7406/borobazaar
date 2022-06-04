@@ -17,7 +17,9 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
   useEffect(() => {
     setOpen(isActive);
   }, [isActive]);
-  const { slug, name, children: items, icon } = item;
+  const name = item.displayName;
+  const icon = item.thumbImage;
+  const { slug, children: items } = item;
   const { displaySidebar, closeSidebar } = useUI();
 
   function toggleCollapse() {
@@ -28,18 +30,23 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
     if (Array.isArray(items) && !!items.length) {
       toggleCollapse();
     } else {
-      const { pathname, query } = router;
+      let { pathname, query } = router;
       const { type, ...rest } = query;
-      router.push(
-        {
-          pathname,
-          query: { ...rest, category: slug },
-        },
-        undefined,
-        {
-          scroll: false,
-        }
-      );
+      var page = pathname.split("/").pop();
+      if(page !== "search"){
+        pathname = pathname + "search";
+      }
+      if (pathname)
+        router.push(
+          {
+            pathname: pathname,
+            query: { ...rest, category: name },
+          },
+          undefined,
+          {
+            scroll: false,
+          }
+        );
       displaySidebar && closeSidebar();
     }
   }
@@ -57,11 +64,10 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
     <>
       <li
         onClick={onClick}
-        className={`flex justify-between items-center transition ${
-          className
-            ? className
-            : 'text-sm md:text-15px hover:bg-skin-two border-t border-skin-base first:border-t-0 px-3.5 2xl:px-4 py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3'
-        } ${isOpen ? 'bg-skin-two' : 'text-skin-base text-opacity-70'}`}
+        className={`flex justify-between items-center transition ${className
+          ? className
+          : 'text-sm md:text-15px hover:bg-skin-two border-t border-skin-base first:border-t-0 px-3.5 2xl:px-4 py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3'
+          } ${isOpen ? 'bg-skin-two' : 'text-skin-base text-opacity-70'}`}
       >
         <button
           className={cn(
@@ -70,12 +76,7 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
         >
           {icon && (
             <div className="inline-flex flex-shrink-0 2xl:w-12 2xl:h-12 3xl:w-auto 3xl:h-auto">
-              <Image
-                src={icon ?? '/assets/placeholder/category-small.svg'}
-                alt={name || t('text-category-thumbnail')}
-                width={40}
-                height={40}
-              />
+              {icon ? <img src={icon} style={{ width: '40px', height: '40px' }} alt={name} /> : null}
             </div>
           )}
           <span className="text-skin-base capitalize ps-2.5 md:ps-4 2xl:ps-3 3xl:ps-4">

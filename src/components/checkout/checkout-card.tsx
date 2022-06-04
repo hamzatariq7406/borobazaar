@@ -57,7 +57,7 @@ const CheckoutCard: React.FC = () => {
         {checkoutFooter.map((item: any) => (
           <CheckoutCardFooterItem item={item} key={item.id} />
         ))}
-        <Button
+        {/* <Button
           variant="formButton"
           className={`w-full mt-8 mb-5 bg-skin-primary text-skin-inverted rounded font-semibold px-4 py-3 transition-all ${
             isEmpty && 'opacity-40 cursor-not-allowed'
@@ -65,7 +65,7 @@ const CheckoutCard: React.FC = () => {
           onClick={orderHeader}
         >
           {t('button-order-now')}
-        </Button>
+        </Button> */}
       </div>
       <Text className="mt-8">
         {t('text-by-placing-your-order')}{' '}

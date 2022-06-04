@@ -58,10 +58,17 @@ const Header: React.FC = () => {
 
           <Logo className="-mt-1" />
 
+
           <HeaderMenu
             data={site_header.menu}
             className="hidden xl:flex md:ps-6 xl:ps-10"
           />
+
+          <Search
+            searchId="top-bar-search"
+            className="lg:flex max-width"
+          />
+
 
           <div className="flex flex-shrink-0 space-s-5 xl:space-s-7 ms-auto">
             <LanguageSwitcher />

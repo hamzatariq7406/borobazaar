@@ -5,6 +5,7 @@ import { ProductGrid } from '@components/product/product-grid';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DownloadApps from '@components/common/download-apps';
 import { GetStaticProps } from 'next';
+import CategoryDropdownSidebar from '@components/category/category-dropdown-sidebar';
 import { Element } from 'react-scroll';
 import SearchTopBar from '@components/search/search-top-bar';
 import Divider from '@components/ui/divider';
@@ -12,11 +13,18 @@ import Seo from '@components/seo/seo';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import { API_ENDPOINTS } from '@framework/utils/api-endpoints';
+import { useCategoriesQuery } from '@framework/category/get-all-categories';
+import CategoryListCard from '@components/cards/category-list-card';
+import { ROUTES } from '@utils/routes';
+import cn from 'classnames';
 import { fetchCategories } from '@framework/category/get-all-categories';
 import { fetchProducts } from '@framework/product/get-all-products';
 import { LIMITS } from '@framework/utils/limits';
 
 export default function Search() {
+  const { data } = useCategoriesQuery({
+    limit: LIMITS.CATEGORIES_LIMITS,
+  });
   return (
     <>
       <Seo
@@ -26,10 +34,10 @@ export default function Search() {
       />
       <Divider />
       <Container>
-        <Element name="grid" className="flex pt-7 lg:pt-11 pb-16 lg:pb-20" style={{marginLeft:'5%'}}>
-          {/* <div className="flex-shrink-0 pe-8 xl:pe-16 hidden lg:block w-80 xl:w-96 sticky top-16 h-full"> */}
-            {/* <ShopFilters /> */}
-          {/* </div> */}
+        <Element name="grid" className="flex pt-7 lg:pt-11 pb-16 lg:pb-20" style={{ marginLeft: '5%' }}>
+          <div className="flex-shrink-0 pe-8 xl:pe-16 hidden lg:block w-80 xl:w-96 sticky top-16 h-full">
+          <CategoryDropdownSidebar className="flex-shrink-0 pe-8 xl:pe-16 hidden lg:block w-80 xl:w-[400px]" />
+          </div>
           <div className="w-full lg:-ms-2 xl:-ms-8 lg:-mt-1">
             <SearchTopBar />
             <ProductGrid />

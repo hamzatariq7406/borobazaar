@@ -14,7 +14,7 @@ const HeaderMenu: React.FC<MenuProps> = ({ data, className }) => {
   return (
     <nav
       className={cn(
-        'headerMenu flex w-full relative -mx-3 xl:-mx-4',
+        'headerMenu w-full flex  relative -mx-3 xl:-mx-4',
         className
       )}
     >

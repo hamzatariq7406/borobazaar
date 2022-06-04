@@ -74,10 +74,10 @@ export function inStock(items: Item[], id: Item['id']) {
 
 export const calculateItemTotals = (items: any) => { 
   return items.map((item:any) => {
-    const splittedString = item.price.split("$");
+    const splittedString = item?.price;
     return ({
       ...item,
-      itemTotal: parseInt(splittedString[1]) * item.quantity!,
+      itemTotal: splittedString * item.quantity,
   })
   })}
   
@@ -85,7 +85,13 @@ export const calculateItemTotals = (items: any) => {
 export const calculateTotal = (items:any) =>{
   let total = 0;
   items.map((item:any) => {
-    const individualPrice = item.quantity! * parseInt(item.price.split("$")[1]);
+    let individualPrice = null;
+    if(isNaN(item.price)){
+      individualPrice = item.quantity! * item?.price?.split("$")[1];
+    } else {
+      individualPrice = item.quantity! * item?.price;
+    }
+   
     total = total + individualPrice;
   })
   return total;

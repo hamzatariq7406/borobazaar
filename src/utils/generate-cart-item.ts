@@ -21,11 +21,11 @@ interface Variation {
   [key: string]: unknown;
 }
 export function generateCartItem(item: any, variation: any) {
-  const id = item.productId;
+  const id = item._id;
   const name = item.displayName;
   const slug = item.displayName;
-  const price = item?.currentSku?.listPrice;
-  const quantity = item.reviews;
+  const price = item?.listPrice;
+  const quantity = item.quantity;
   const unit = "1 each";
   if (!isEmpty(variation)) {
     return {
@@ -35,8 +35,8 @@ export function generateCartItem(item: any, variation: any) {
       slug:variation.displayName,
       unit:"1 each",
       stock: variation.reviews,
-      price: variation.currentSku.listPrice ? variation.currentSku.listPrice : variation.currentSku.listPrice,
-      image: variation.currentSku.heroImage,
+      price: item.listPrice ? item.listPrice : item.listPrice,
+      image: variation.heroImage,
       variationId: variation.id,
     };
   }

@@ -18,6 +18,7 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
   address = address || [];
 
   const [selected, setSelected] = useState(address[0]);
+  localStorage.setItem("address", selected._id);
   return (
     <div className="text-15px h-full flex flex-col justify-between -mt-4 md:mt-0">
       <RadioGroup
@@ -48,7 +49,7 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
               >
                 {item?.address?.formatted_address}
               </RadioGroup.Description>
-              <div className="flex absolute end-3 top-3 z-10 lg:opacity-0 transition-all address__actions">
+              {/* <div className="flex absolute end-3 top-3 z-10 lg:opacity-0 transition-all address__actions">
                 <button
                   onClick={() => handlePopupView(item)}
                   className="flex justify-center items-center bg-skin-primary h-6 w-6 rounded-full text-skin-inverted text-opacity-80 text-base"
@@ -56,7 +57,7 @@ const AddressGrid: React.FC<{ address?: any }> = ({ address }) => {
                   <span className="sr-only">{t(item?.title)}</span>
                   <TiPencil />
                 </button>
-              </div>
+              </div> */}
             </RadioGroup.Option>
           ))
         ) : (

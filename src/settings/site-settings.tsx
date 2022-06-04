@@ -101,8 +101,13 @@ export const siteSettings = {
       // },
       {
         id: 4,
-        path: '/search/',
-        label: 'menu-search',
+        path: '/',
+        label: 'Home',
+      },
+      {
+        id:5,
+        path:'/',
+        label:'Shop Now'
       },
       // {
       //   id: 5,

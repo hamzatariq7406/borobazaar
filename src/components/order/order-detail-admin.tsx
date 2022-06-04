@@ -22,6 +22,9 @@ const OrderItemCard = ({ product }: { product: any }) => {
 const OrderDetails: any = ({
   className = 'pt-10 lg:pt-12',
   items,
+  address,
+  user,
+  status,
   totals
 }: any) => {
   const { t } = useTranslation('common');
@@ -53,20 +56,48 @@ const OrderDetails: any = ({
 
   if (isLoading) return <p>Loading...</p>;
 
-
   return (
     <div className={className}>
-      <Heading variant="heading" className="mb-6 xl:mb-7">
-        {t('text-order-details')}:
+         <Heading variant="heading" className="mb-6 xl:mb-7">
+        {"User Detail"}:
+      </Heading>
+      <table className="w-full text-skin-base font-semibold text-sm lg:text-base">
+        <tfoot>
+          <tr className="odd:bg-skin-secondary">
+            <td className="p-4 italic">{"Name"}:</td>
+            <td className="p-4">{user?.name}</td>
+          </tr>
+          {/* <tr className="odd:bg-skin-secondary">
+            <td className="p-4 italic">{t('text-shipping')}:</td>
+            <td className="p-4">
+              {shipping}
+              <span className="text-[13px] font-normal ps-1.5 inline-block">
+                via Flat rate
+              </span>
+            </td>
+          </tr> */}
+          <tr className="odd:bg-skin-secondary">
+            <td className="p-4 italic">{"Email"}:</td>
+            <td className="p-4">{user?.email}</td>
+          </tr>
+          <tr className="odd:bg-skin-secondary">
+            <td className="p-4 italic">{"Address"}:</td>
+            <td className="p-4">{address}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <Heading variant="heading" className="mb-6 xl:mb-7" style={{marginTop:'5%'}}>
+        {"Order Detail"}:
       </Heading>
       <table className="w-full text-skin-base font-semibold text-sm lg:text-base">
         <thead>
           <tr>
             <th className="bg-skin-secondary p-4 text-start first:rounded-ts-md w-1/2">
-              {t('text-product')}
+              {"Products"}
             </th>
             <th className="bg-skin-secondary p-4 text-start last:rounded-te-md w-1/2">
-              {t('text-total')}
+              {"Totals"}
             </th>
           </tr>
         </thead>
@@ -78,7 +109,7 @@ const OrderDetails: any = ({
         </tbody>
         <tfoot>
           <tr className="odd:bg-skin-secondary">
-            <td className="p-4 italic">{t('text-sub-total')}:</td>
+            <td className="p-4 italic">{"Sub Total"}:</td>
             <td className="p-4">{`$${totals}`}</td>
           </tr>
           {/* <tr className="odd:bg-skin-secondary">
@@ -91,16 +122,16 @@ const OrderDetails: any = ({
             </td>
           </tr> */}
           <tr className="odd:bg-skin-secondary">
-            <td className="p-4 italic">{t('text-payment-method')}:</td>
+            <td className="p-4 italic">{"payment Method"}:</td>
             <td className="p-4">{"Card Payment"}</td>
           </tr>
           <tr className="odd:bg-skin-secondary">
-            <td className="p-4 italic">{t('text-total')}:</td>
+            <td className="p-4 italic">{"Total"}:</td>
             <td className="p-4">{`$${parseInt(totals)}`}</td>
           </tr>
           <tr className="odd:bg-skin-secondary">
-            <td className="p-4 italic">{t('text-note')}:</td>
-            <td className="p-4">{t('text-new-order')}</td>
+            <td className="p-4 italic">{"Order Status"}:</td>
+            <td className="p-4">{status}</td>
           </tr>
         </tfoot>
       </table>
