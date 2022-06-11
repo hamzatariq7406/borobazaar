@@ -10,7 +10,7 @@ import MobileNavigation from '@components/layout/mobile-navigation/mobile-naviga
 const Layout: React.FC = ({ children }) => {
   const { t } = useTranslation('common');
   const [highlightedBar, setHighlightedBar] = useSessionStorage(
-    'borobazar-highlightedBar',
+    'kahfmall-highlightedBar',
     'false'
   );
 

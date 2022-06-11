@@ -304,7 +304,7 @@
 }
 
 /* Breadcrumb truncate last child */
-.borobazarBreadcrumb li:last-child {
+.kahfmallBreadcrumb li:last-child {
   @apply truncate font-medium text-skin-base;
 }
 .cart-counter-badge {
@@ -314,14 +314,14 @@
   border-radius: 20px;
   font-size: 10px;
 }
-.style-variant-white .borobazarBreadcrumb ol > li > a > svg,
-.style-variant-white .borobazarBreadcrumb ol > li > a {
+.style-variant-white .kahfmallBreadcrumb ol > li > a > svg,
+.style-variant-white .kahfmallBreadcrumb ol > li > a {
   @apply text-skin-inverted text-opacity-70;
 }
-.style-variant-white .borobazarBreadcrumb ol > li > svg {
+.style-variant-white .kahfmallBreadcrumb ol > li > svg {
   @apply text-skin-inverted text-opacity-50;
 }
-.style-variant-white .borobazarBreadcrumb ol > li:last-of-type > a {
+.style-variant-white .kahfmallBreadcrumb ol > li:last-of-type > a {
   @apply text-skin-inverted;
 }
 

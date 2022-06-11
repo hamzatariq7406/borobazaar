@@ -74,7 +74,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
       <div className="flex bg-skin-fill mx-auto rounded-lg overflow-hidden">
         <div className="md:w-[55%] xl:w-[60%] registration hidden md:block">
           <Image
-            src="/assets/images/login.png"
+            src="/assets/images/010.png"
             alt="signin Image"
             width={800}
             height={621}

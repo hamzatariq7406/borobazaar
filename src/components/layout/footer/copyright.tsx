@@ -20,7 +20,7 @@ const Copyright: React.FC<CopyrightProps> = ({ payment }) => {
     <div className="pb-20 lg:pb-7">
       <Container>
         <div className="flex flex-col md:flex-row text-center md:justify-between border-t border-skin-three pt-6 lg:pt-7">
-          <p className="text-skin-base text-sm leading-7 lg:leading-[27px] lg:text-15px">
+          <p className="text-skin-base text-sm leading-7 lg:leading-[27px] lg:text-15px" style={{marginTop:'3%'}}>
             &copy;&nbsp;{t('text-copyright')} {year}&nbsp;
             <a
               className="text-skin-base transition-colors duration-200 ease-in-out hover:text-skin-primary"
@@ -30,6 +30,10 @@ const Copyright: React.FC<CopyrightProps> = ({ payment }) => {
             </a>
             &nbsp; {t('text-all-rights-reserved')}
           </p>
+
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNL-nIbaQ7kJS4hge7Jv8Pri3_iJH8CsdtQQ&usqp=CAU">
+
+          </img>
 
           {payment && (
             <ul className="flex flex-wrap justify-center items-center space-s-4 sm:space-s-5 lg:space-s-7 -mb-1.5 md:mb-0 mx-auto md:mx-0 pt-3.5 md:pt-0">

@@ -10,7 +10,7 @@ import { useTranslation } from 'next-i18next';
 const Layout: React.FC = ({ children }) => {
   const { t } = useTranslation('common');
   const [highlightedBar, setHighlightedBar] = useSessionStorage(
-    'borobazar-highlightedBar',
+    'kahfmall-highlightedBar',
     'false'
   );
 

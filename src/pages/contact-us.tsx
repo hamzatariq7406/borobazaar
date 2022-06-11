@@ -31,7 +31,7 @@ export default function ContactUsPage() {
         </div>
         <ContactInformation />
       </Container>
-      <div className="mt-12 md:mt-16 xl:mt-20 2xl:mt-24 bg-skin-three relative h-[420px]">
+      {/* <div className="mt-12 md:mt-16 xl:mt-20 2xl:mt-24 bg-skin-three relative h-[420px]">
         <Map
           lat={1.295831}
           lng={103.76261}
@@ -39,8 +39,9 @@ export default function ContactUsPage() {
           zoom={15}
           showInfoWindow={true}
         />
-      </div>
-      <DownloadApps />
+      </div> */}
+      <div style={{marginTop:'2%'}}> <DownloadApps /></div>
+     
     </>
   );
 }

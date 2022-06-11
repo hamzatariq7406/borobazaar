@@ -173,12 +173,12 @@ export const bannerGridThree = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFLQ2wxHklIxDpk5mepRbDRqnXWevypCkbLA&usqp=CAU',
+        url: '/assets/images/001.png',
         width: 450,
         height: 255,
       },
       desktop: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFLQ2wxHklIxDpk5mepRbDRqnXWevypCkbLA&usqp=CAU',
+        url: '/assets/images/001.png',
         width: 597,
         height: 340,
       },
@@ -190,12 +190,12 @@ export const bannerGridThree = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2014_44/744921/2014-08-15t143300z_1380549864_tm3ea8f0szo01_rtrmadp_3_estelauder-results.jpg',
+        url: '/assets/images/004.png',
         width: 450,
         height: 255,
       },
       desktop: {
-        url: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2014_44/744921/2014-08-15t143300z_1380549864_tm3ea8f0szo01_rtrmadp_3_estelauder-results.jpg',
+        url: '/assets/images/004.png',
         width: 597,
         height: 340,
       },
@@ -207,12 +207,12 @@ export const bannerGridThree = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZKcyBn9sWQZrKh5KjXKnFLt8SaNq8MNoUeQ-KoAEEmE4WOHecLdjlKFKox4fW8cHUS2I&usqp=CAU',
+        url: '/assets/images/011.png',
         width: 450,
         height: 255,
       },
       desktop: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZKcyBn9sWQZrKh5KjXKnFLt8SaNq8MNoUeQ-KoAEEmE4WOHecLdjlKFKox4fW8cHUS2I&usqp=CAU',
+        url: '/assets/images/011.png',
         width: 597,
         height: 340,
       },
@@ -321,12 +321,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://media.istockphoto.com/vectors/super-sale-cosmetics-banner-for-shopping-season-makeup-accessories-vector-id1132192531',
+        url: '/assets/images/007.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: 'https://media.istockphoto.com/vectors/super-sale-cosmetics-banner-for-shopping-season-makeup-accessories-vector-id1132192531',
+        url: '/assets/images/007.png',
         width: 475,
         height: 250,
       },
@@ -338,12 +338,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://png.pngtree.com/template/20200307/ourmid/pngtree-simple-personality-lipstick-makeup-social-platform-promotion-sns-banner-image_355795.jpg',
+        url: '/assets/images/006.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: 'https://png.pngtree.com/template/20200307/ourmid/pngtree-simple-personality-lipstick-makeup-social-platform-promotion-sns-banner-image_355795.jpg',
+        url: '/assets/images/006.png',
         width: 475,
         height: 250,
       },
@@ -355,12 +355,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://previews.123rf.com/images/nikelser/nikelser2006/nikelser200603967/149999883-big-spring-sale-banner-template-with-camomiles-and-rose-flower-on-pink-stripes-background-and-gold-f.jpg',
+        url: '/assets/images/001.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: 'https://previews.123rf.com/images/nikelser/nikelser2006/nikelser200603967/149999883-big-spring-sale-banner-template-with-camomiles-and-rose-flower-on-pink-stripes-background-and-gold-f.jpg',
+        url: '/assets/images/001.png',
         width: 475,
         height: 250,
       },
@@ -372,12 +372,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2cazIQOOAbWNMHyv6h3VnFfELZhyPeGH1w&usqp=CAU',
+        url: '/assets/images/005.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy2cazIQOOAbWNMHyv6h3VnFfELZhyPeGH1w&usqp=CAU',
+        url: '/assets/images/005.png',
         width: 475,
         height: 250,
       },
@@ -389,12 +389,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdUUGuCvfVZEa2Xuag8qaR7VFg_s3mKRUd_A&usqp=CAU',
+        url: '/assets/images/011.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdUUGuCvfVZEa2Xuag8qaR7VFg_s3mKRUd_A&usqp=CAU',
+        url: '/assets/images/011.png',
         width: 475,
         height: 250,
       },

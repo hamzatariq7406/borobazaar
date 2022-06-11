@@ -1,4 +1,4 @@
-# BoroBazar Documentation
+# kahfmall Documentation
 
 ## Introduction
 
@@ -24,7 +24,7 @@ Tech specification for this template is given below
 
 ## Getting Started & Installation
 
-For getting started with the template you have to follow the below procedure. First navigate to the `borobazar` directory.
+For getting started with the template you have to follow the below procedure. First navigate to the `kahfmall` directory.
 
 ### Step 1 : Configure your env file
 
@@ -44,7 +44,7 @@ Within the project directory you'll find a `.env.local.template` file just renam
 Run below command for getting started with this template.
 
 ```bash
-# on borobazar directory
+# on kahfmall directory
 $ yarn
 $ yarn dev # which will running the template for development
 ```
@@ -130,7 +130,7 @@ const { data, isLoading, error } = useProductQuery(slug as string);
 
 If you want to host the template in vercel.com then follow the below procedure
 
-- Navigate to `borobazar`
+- Navigate to `kahfmall`
 - Put your api endpoint at `vercel.json` file.
 - Now run below command
 
