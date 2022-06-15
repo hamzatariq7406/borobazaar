@@ -35,11 +35,13 @@ const WidgetLink: React.FC<Props> = ({ className, data }) => {
               </span>
             )}
 
-            <div
+
+            <Link
+              href={list.path ? list.path : '#!'}
               className="transition-colors duration-200 hover:text-skin-base"
             >
               {t(`${list.title}`)}
-            </div>
+            </Link>
           </li>
         ))}
       </ul>

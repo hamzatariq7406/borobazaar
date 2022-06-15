@@ -36,7 +36,7 @@ const DownloadApps: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
   return (
     <div className={cn('bg-skin-three overflow-hidden', className)}>
       <img
-        src="/assets/images/009.png"
+        src="/assets/images/003.png"
         alt={t('text-app-thumbnail')}
         style={{ width: '100%', height: '100%' }}
       />

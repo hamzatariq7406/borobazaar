@@ -33,7 +33,7 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
               className="transition hover:opacity-80"
               key={`social-list--key${item.id}`}
             >
-              <div>
+              <Link href={item.path ? item.path : '/#'}>
                 <a target="_blank" rel="noreferrer">
                   <Image
                     src={item.image}
@@ -43,7 +43,7 @@ const WidgetAbout: React.FC<AboutProps> = ({ social, className }) => {
                     className="transform scale-85 md:scale-100"
                   />
                 </a>
-              </div>
+              </Link>
             </li>
           ))}
         </ul>

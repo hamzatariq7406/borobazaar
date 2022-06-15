@@ -15,11 +15,11 @@
 /*keyframe animations*/
 .first {
   height: 40vh;
-  -webkit-animation: bannermove 70s linear infinite;
-  -moz-animation: bannermove 70s linear infinite;
-  -ms-animation: bannermove 70s linear infinite;
-  -o-animation: bannermove 70s linear infinite;
-  animation: bannermove 70s infinite;
+  -webkit-animation: bannermove 20s linear infinite;
+  -moz-animation: bannermove 20s linear infinite;
+  -ms-animation: bannermove 20s linear infinite;
+  -o-animation: bannermove 20s linear infinite;
+  animation: bannermove 20s infinite;
 }
 .img {
   height: 40vh;

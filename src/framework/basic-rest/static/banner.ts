@@ -173,12 +173,12 @@ export const bannerGridThree = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/001.png',
+        url: '/assets/images/008.png',
         width: 450,
         height: 255,
       },
       desktop: {
-        url: '/assets/images/001.png',
+        url: '/assets/images/008.png',
         width: 597,
         height: 340,
       },
@@ -190,34 +190,34 @@ export const bannerGridThree = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/004.png',
+        url: '/assets/images/002.png',
         width: 450,
         height: 255,
       },
       desktop: {
-        url: '/assets/images/004.png',
+        url: '/assets/images/002.png',
         width: 597,
         height: 340,
       },
     },
   },
-  {
-    id: 3,
-    title: 'Your Perfect Diet',
-    slug: '/search',
-    image: {
-      mobile: {
-        url: '/assets/images/011.png',
-        width: 450,
-        height: 255,
-      },
-      desktop: {
-        url: '/assets/images/011.png',
-        width: 597,
-        height: 340,
-      },
-    },
-  },
+  // {
+  //   id: 3,
+  //   title: 'Your Perfect Diet',
+  //   slug: '/search',
+  //   image: {
+  //     mobile: {
+  //       url: '/assets/images/011.png',
+  //       width: 450,
+  //       height: 255,
+  //     },
+  //     desktop: {
+  //       url: '/assets/images/011.png',
+  //       width: 597,
+  //       height: 340,
+  //     },
+  //   },
+  // },
 ];
 
 export const homeTwoHeroBanner = [
@@ -338,12 +338,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/006.png',
+        url: '/assets/images/005.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: '/assets/images/006.png',
+        url: '/assets/images/005.png',
         width: 475,
         height: 250,
       },
@@ -372,12 +372,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/005.png',
+        url: '/assets/images/004.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: '/assets/images/005.png',
+        url: '/assets/images/004.png',
         width: 475,
         height: 250,
       },
@@ -389,12 +389,12 @@ export const bannerDiscount = [
     slug: '/search',
     image: {
       mobile: {
-        url: '/assets/images/011.png',
+        url: '/assets/images/006.png',
         width: 475,
         height: 250,
       },
       desktop: {
-        url: '/assets/images/011.png',
+        url: '/assets/images/006.png',
         width: 475,
         height: 250,
       },

@@ -104,11 +104,11 @@ export const siteSettings = {
         path: '/',
         label: 'Home',
       },
-      {
-        id:5,
-        path:'/',
-        label:'Shop Now'
-      },
+      // {
+      //   id:5,
+      //   path:'/',
+      //   label:'Shop Now'
+      // },
       // {
       //   id: 5,
       //   path: '/shops/',

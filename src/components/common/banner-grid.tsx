@@ -21,7 +21,7 @@ const breakpoints = {
 
 const BannerGrid: React.FC<BannerProps> = ({
   data,
-  grid = 3,
+  grid = 2,
   className = 'mb-3 xl:mb-6',
 }) => {
   const { width } = useWindowSize();
@@ -41,7 +41,7 @@ const BannerGrid: React.FC<BannerProps> = ({
         </Carousel>
       ) : (
         <div
-          className={`grid gap-4 2xl:gap-5 grid-cols-1 sm:grid-cols-${grid}`}
+          className={`grid gap-0 2xl:gap-5 grid-cols-1 sm:grid-cols-${grid}`}
         >
           {data?.map((banner: any) => (
             <BannerCard

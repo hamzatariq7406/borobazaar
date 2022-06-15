@@ -24,9 +24,9 @@ export default function ContactUsPage() {
             <div className="w-full md:w-[53%] xl:w-[60%] md:pe-8 lg:pe-0 2xl:pe-24 lg:mb-0 mb-8">
               <ContactSupport />
             </div>
-            <div className="w-full md:w-[47%] xl:w-[40%] pb-0.5 lg:ps-12 pt-1.5">
+            {/* <div className="w-full md:w-[47%] xl:w-[40%] pb-0.5 lg:ps-12 pt-1.5">
               <ContactForm />
-            </div>
+            </div> */}
           </div>
         </div>
         <ContactInformation />
