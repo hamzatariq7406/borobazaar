@@ -5,14 +5,13 @@ import { useUI } from '@contexts/ui.context';
 import { useEffect, useState } from 'react';
 import Image from '@components/ui/image';
 import { useTranslation } from 'next-i18next';
+import styles from './sidebar-menu.module.css';
 
 function SidebarMenuItem({ className, item, depth = 0 }: any) {
   const { t } = useTranslation('common');
   const router = useRouter();
   const active = router?.query?.category;
-  const isActive =
-    active === item.slug ||
-    item?.children?.some((_item: any) => _item.slug === active);
+  const isActive = false;
   const [isOpen, setOpen] = useState<boolean>(isActive);
   useEffect(() => {
     setOpen(isActive);
@@ -33,7 +32,7 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
       let { pathname, query } = router;
       const { type, ...rest } = query;
       var page = pathname.split("/").pop();
-      if(page !== "search"){
+      if (page !== "search") {
         pathname = pathname + "search";
       }
       if (pathname)
@@ -64,9 +63,9 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
     <>
       <li
         onClick={onClick}
-        className={`flex justify-between items-center transition ${className
+        className={` flex justify-between items-center transition ${className
           ? className
-          : 'text-sm md:text-15px hover:bg-skin-two border-t border-skin-base first:border-t-0 px-3.5 2xl:px-4 py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3'
+          : 'text-sm md:text-15px border-t border-skin-base first:border-t-0 px-3.5 2xl:px-4 py-3 xl:py-3.5 2xl:py-2.5 3xl:py-3'
           } ${isOpen ? 'bg-skin-two' : 'text-skin-base text-opacity-70'}`}
       >
         <button
@@ -108,7 +107,7 @@ function SidebarMenuItem({ className, item, depth = 0 }: any) {
 
 function SidebarMenu({ items, className }: any) {
   return (
-    <ul className={cn(className)}>
+    <ul className={`cn(className)  ${styles.hoverClass} `}>
       {items?.map((item: any) => (
         <SidebarMenuItem key={`${item.slug}-key-${item.id}`} item={item} />
       ))}
