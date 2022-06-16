@@ -4,16 +4,16 @@ export const footer = {
       id: 1,
       widgetTitle: 'widget-title-about',
       lists: [
-        {
-          id: 1,
-          title: 'link-about-us',
-          path: '/about-us',
-        },
-        {
-          id: 2,
-          title: 'link-contact-us',
-          path: '/contact-us',
-        },
+        // {
+        //   id: 1,
+        //   title: 'link-about-us',
+        //   path: '/about-us',
+        // },
+        // {
+        //   id: 2,
+        //   title: 'link-contact-us',
+        //   path: '/contact-us',
+        // },
         {
           id: 3,
           title: 'link-about-team',
@@ -40,11 +40,11 @@ export const footer = {
           title: 'link-terms',
           path: '/terms',
         },
-        {
-          id: 3,
-          title: 'link-return-policy',
-          path: '/privacy',
-        },
+        // {
+        //   id: 3,
+        //   title: 'link-return-policy',
+        //   path: '/privacy',
+        // },
         {
           id: 4,
           title: 'link-site-map',
@@ -52,32 +52,32 @@ export const footer = {
         },
       ],
     },
-    {
-      id: 3,
-      widgetTitle: 'widget-title-community',
-      lists: [
-        {
-          id: 1,
-          title: 'link-announcements',
-          path: '/',
-        },
-        {
-          id: 2,
-          title: 'link-answer-center',
-          path: '/',
-        },
-        {
-          id: 3,
-          title: 'link-discussion-boards',
-          path: '/',
-        },
-        {
-          id: 4,
-          title: 'link-giving-works',
-          path: '/',
-        },
-      ],
-    },
+    // {
+    //   id: 3,
+    //   widgetTitle: 'widget-title-community',
+    //   lists: [
+    //     {
+    //       id: 1,
+    //       title: 'link-announcements',
+    //       path: '/',
+    //     },
+    //     {
+    //       id: 2,
+    //       title: 'link-answer-center',
+    //       path: '/',
+    //     },
+    //     {
+    //       id: 3,
+    //       title: 'link-discussion-boards',
+    //       path: '/',
+    //     },
+    //     {
+    //       id: 4,
+    //       title: 'link-giving-works',
+    //       path: '/',
+    //     },
+    //   ],
+    // },
   ],
   payment: [
     {

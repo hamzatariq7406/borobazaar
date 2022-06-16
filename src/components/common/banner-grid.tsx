@@ -27,7 +27,7 @@ const BannerGrid: React.FC<BannerProps> = ({
   const { width } = useWindowSize();
   return (
     <div className={className}>
-      {width! < 1280 ? (
+      {1 === 1 ? (
         <Carousel
           breakpoints={breakpoints}
           prevActivateId="bundle-carousel-button-prev"

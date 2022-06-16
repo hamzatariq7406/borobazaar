@@ -26,7 +26,7 @@ const BannerCard: React.FC<BannerProps> = ({
   const { slug, title, image } = banner;
   const selectedImage = getImage(width!, image);
   return (
-    <div className={cn('mx-auto', className)} style={selectedImage.url === "/assets/images/002.png" ? { width: "103%" } : { width: "102%" }}>
+    <div className={cn('mx-auto', className)}>
       <Link
         href={slug}
         className={cn(
@@ -38,7 +38,7 @@ const BannerCard: React.FC<BannerProps> = ({
           src={selectedImage.url}
           style={{ height: selectedImage.height, width: '100%' }}
           alt={title}
-          className={cn('bg-skin-thumbnail object-cover w-full', {
+          className={cn('bg-skin-thumbnail  w-full', {
             'rounded-md': variant === 'rounded',
           })}
         />
