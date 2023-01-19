@@ -32,7 +32,7 @@ const ProductsGridBlock: React.FC<ProductsProps> = ({
   return (
     <div className={`${className}`}>
       <SectionHeader
-        subDomainHeading={`Best ${currentCategory?.toUpperCase()} products near you`}
+        subDomainHeading={`Best ${currentCategory} products near you`?.toUpperCase()}
         sectionHeading={sectionHeading}
         sectionSubHeading={sectionSubHeading}
         headingPosition={headingPosition}
