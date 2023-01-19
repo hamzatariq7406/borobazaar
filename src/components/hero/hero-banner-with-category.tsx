@@ -26,17 +26,19 @@ const HeroBannerWithCategory: React.FC<Props> = ({
   return (
     <div className={`xl:flex md:pb-2.5 ${className}`}>
       <div className="hidden xl:block flex-shrink-0 pe-8 xl:pe-16 xl:w-[400px] pt-[1px]">
-        <div className="border border-skin-base rounded-md flex flex-col justify-between" style={{ marginTop: 45 }}>
-          <FeatureCarousel />
+        <div className="border border-skin-base rounded-md flex flex-col h-full justify-between">
+   <FeatureCarousel />
+
+          <CategoryDropdownSidebar className="flex-shrink-0 pe-8 xl:pe-16 hidden lg:block w-80 xl:w-[400px]" />
         </div>
       </div>
       <div className="trendy-main-content w-full xl:-ms-8">
         <MovingBanner />
-        <BannerAllCarousel
+        {/* <BannerAllCarousel
           data={bannerDiscount}
           buttonSize="small"
           className="mb-0"
-        />
+        /> */}
       </div>
     </div>
   );
