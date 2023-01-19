@@ -12,19 +12,13 @@ const BestSellerGroceryProductFeed: FC<ProductFeedProps> = ({ className }) => {
 
 
   const [currentCategory, setCurrentCategory] = useState('');
-  let response: any = null;
+
+  const { data, error, isLoading } = useBestSellerGroceryProductsQuery({
+    limit: LIMITS.BEST_SELLER_GROCERY_PRODUCTS_LIMITS
+  });;
 
   useEffect(() => {
     setCurrentCategory(window.location.hostname.split('.')[0]);
-    let category = "";
-
-    if (window.location.hostname.split('.')[0] === "home") {
-      category = 'Home & Kitchen';
-    }
-    response = useBestSellerGroceryProductsQuery({
-      limit: LIMITS.BEST_SELLER_GROCERY_PRODUCTS_LIMITS,
-      category: category
-    });
   }, [])
 
   return (
@@ -35,9 +29,9 @@ const BestSellerGroceryProductFeed: FC<ProductFeedProps> = ({ className }) => {
           sectionSubHeading="text-fresh-grocery-items"
           className={className}
           currentCategory={currentCategory}
-          products={response?.data}
-          loading={response?.isLoading}
-          error={response?.error?.message}
+          products={data}
+          loading={isLoading}
+          error={error?.message}
           limit={LIMITS.BEST_SELLER_GROCERY_PRODUCTS_LIMITS}
           uniqueKey="best-sellers"
         />

@@ -4,9 +4,17 @@ import { API_ENDPOINTS } from '@framework/utils/api-endpoints';
 import { useQuery } from 'react-query';
 
 export const fetchBestSellerGroceryProducts = async ({ queryKey }: any) => {
-  const [_key, _params] = queryKey;
-  const { data } = await http.post(`https://server.kahfmall.com/api/products/product-by-category`, { category: _params?.category })
-  return data as Product[];
+
+  if (window?.location) {
+    let category = ""
+    if (window?.location?.hostname?.split('.')[0] === "home") {
+      category = 'Home & Kitchen';
+    }
+    const [_key, _params] = queryKey;
+    const { data } = await http.post(`https://server.kahfmall.com/api/products/product-by-category`, { category })
+    return data as Product[];
+  }
+  return []
 };
 export const useBestSellerGroceryProductsQuery = (
   options: QueryOptionsType
