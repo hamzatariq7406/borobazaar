@@ -49,7 +49,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
     if (password !== confirmPassword) {
       setPasswordMatchError("Password does not matched");
     } else {
-      axios.post("https://kahf-mall.herokuapp.com/api/users/register", {
+      axios.post("https://server.kahfmall.com/api/users/register", {
         name,
         email,
         password

@@ -11,7 +11,7 @@ const fetchProducts = async ({ queryKey }: any) => {
   const pathName = queryKey[1].category;
   const [_key, _params] = queryKey;
 
-  const { data } = await http.post(`https://kahf-mall.herokuapp.com/api/products/product-by-subcategory`, { category: _params.category });
+  const { data } = await http.post(`https://server.kahfmall.com/api/products/product-by-subcategory`, { category: _params.category });
   return {
     data: shuffle(data) as Product[],
     paginatorInfo: {

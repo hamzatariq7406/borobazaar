@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 
 export const fetchBestSellerGroceryProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.get("https://kahf-mall.herokuapp.com/api/products/best-seller-products");
+  const { data } = await http.post(`https://server.kahfmall.com/api/products/product-by-category`, { category: _params?.category })
   return data as Product[];
 };
 export const useBestSellerGroceryProductsQuery = (

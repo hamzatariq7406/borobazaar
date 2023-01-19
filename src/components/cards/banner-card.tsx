@@ -27,8 +27,7 @@ const BannerCard: React.FC<BannerProps> = ({
   const selectedImage = getImage(width!, image);
   return (
     <div className={cn('mx-auto', className)}>
-      <Link
-        href={slug}
+      <div
         className={cn(
           'h-full group flex justify-center relative overflow-hidden',
           classNameInner
@@ -45,7 +44,7 @@ const BannerCard: React.FC<BannerProps> = ({
         {effectActive && (
           <div className="absolute top-0 -start-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-30 group-hover:animate-shine" />
         )}
-      </Link>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 
 export const fetchPopularProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.get("https://kahf-mall.herokuapp.com/api/products/popular-products");
+  const { data } = await http.get("https://server.kahfmall.com/api/products/popular-products");
   return data as Product[];
 };
 export const usePopularProductsQuery = (options: QueryOptionsType) => {

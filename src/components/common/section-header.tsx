@@ -8,6 +8,7 @@ interface Props {
   sectionSubHeading?: string;
   className?: string;
   headingPosition?: 'left' | 'center';
+  subDomainHeading?:string
 }
 
 const SectionHeader: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const SectionHeader: React.FC<Props> = ({
   sectionSubHeading,
   className = 'pb-0.5 mb-5 xl:mb-6',
   headingPosition = 'left',
+  subDomainHeading
 }) => {
   const { t } = useTranslation('common');
   return (
@@ -30,7 +32,7 @@ const SectionHeader: React.FC<Props> = ({
           '3xl:text-[25px] 3xl:leading-9': headingPosition === 'center',
         })}
       >
-        {t(sectionHeading)}
+        {subDomainHeading ? subDomainHeading : t(sectionHeading)}
       </Heading>
       {sectionSubHeading && headingPosition === 'center' && (
         <Text variant="medium" className="pb-0.5 mt-1.5 lg:mt-2.5 xl:mt-3">

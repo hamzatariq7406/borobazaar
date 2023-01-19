@@ -14,6 +14,7 @@ interface ProductsProps {
   error?: string;
   limit?: number;
   uniqueKey?: string;
+  currentCategory?:string
 }
 
 const ProductsGridBlock: React.FC<ProductsProps> = ({
@@ -26,10 +27,12 @@ const ProductsGridBlock: React.FC<ProductsProps> = ({
   error,
   limit,
   uniqueKey,
+  currentCategory
 }) => {
   return (
     <div className={`${className}`}>
       <SectionHeader
+        subDomainHeading={`Best ${currentCategory?.toUpperCase()} products near you`}
         sectionHeading={sectionHeading}
         sectionSubHeading={sectionSubHeading}
         headingPosition={headingPosition}

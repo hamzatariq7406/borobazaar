@@ -39,7 +39,7 @@ const AddContactForm: React.FC = () => {
     if (localStorage.getItem("user")) {
       user = JSON.parse(localStorage.getItem("user") || "")
     }
-    axios.post("https://kahf-mall.herokuapp.com/api/contact/add-contact", {
+    axios.post("https://server.kahfmall.com/api/contact/add-contact", {
       title: values.title,
       default: values.default,
       number: values.number

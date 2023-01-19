@@ -11,7 +11,7 @@ const fetchOrders = async ({ queryKey }: any) => {
       user = JSON.parse(localStorage.getItem("user") || "")
     }
   
-  const { data } = await axios.get("https://kahf-mall.herokuapp.com/api/orders/mine", {
+  const { data } = await axios.get("https://server.kahfmall.com/api/orders/mine", {
     headers: { Authorization: `Bearer ${user.token}` }
   })
   return {

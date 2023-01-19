@@ -22,7 +22,7 @@ const ActionsButton: React.FC<{ item?: any }> = ({ item }) => {
         }
 
 
-        axios.put(`https://kahf-mall.herokuapp.com/api/orders/${item.id}/deliver`, {},
+        axios.put(`https://server.kahfmall.com/api/orders/${item.id}/deliver`, {},
             {
                 headers: { Authorization: `Bearer ${user.token}` }
             }

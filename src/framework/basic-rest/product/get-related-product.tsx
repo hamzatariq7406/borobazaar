@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 
 export const fetchRelatedProducts = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
-  const { data } = await http.post(`https://kahf-mall.herokuapp.com/api/products/product-by-subcategory`,{category:_params.category});
+  const { data } = await http.post(`https://server.kahfmall.com/api/products/product-by-subcategory`,{category:_params.category});
   return data;
 };
 export const useRelatedProductsQuery = (options: QueryOptionsType) => {

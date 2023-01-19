@@ -36,7 +36,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isPopup = true, className }) => {
   } = useForm<LoginInputType>();
 
   function onSubmit({ email, password, remember_me }: LoginInputType) {
-    axios.post("https://kahf-mall.herokuapp.com/api/users/signin", {
+    axios.post("https://server.kahfmall.com/api/users/signin", {
       email,
       password
     }).then(res => {

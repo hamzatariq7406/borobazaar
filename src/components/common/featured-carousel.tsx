@@ -56,19 +56,19 @@ const data = [
     title: 'feature-title-eight',
     description: 'feature-title-eight-description',
   },
-  {
-    id: 5,
-    icon: (
-      <ChatIcon
-        color="#E9AD26"
-        width="55px"
-        height="55px"
-        className="transform scale-75 xl:scale-90 3xl:scale-100"
-      />
-    ),
-    title: 'feature-title-nine',
-    description: 'feature-title-nine-description',
-  },
+  // {
+  //   id: 5,
+  //   icon: (
+  //     <ChatIcon
+  //       color="#E9AD26"
+  //       width="55px"
+  //       height="55px"
+  //       className="transform scale-75 xl:scale-90 3xl:scale-100"
+  //     />
+  //   ),
+  //   title: 'feature-title-nine',
+  //   description: 'feature-title-nine-description',
+  // },
 ];
 
 interface Props {
@@ -101,19 +101,19 @@ const FeatureCarousel: React.FC<Props> = ({
   className = 'mb-12 md:mb-14 xl:mb-[74px]',
 }) => {
   return (
-    <div className={`heightFull ${className}`}>
-      <Carousel
+    <div className={`heightFull ${className}`} style={{ marginBottom: 'unset' }}>
+      {/* <Carousel
         autoplay={false}
         breakpoints={breakpoints}
         prevActivateId="featured-carousel-button-prev"
         nextActivateId="featured-carousel-button-next"
-      >
-        {data?.map((item) => (
-          <SwiperSlide key={`featured-key-${item.id}`}>
-            <FeaturedCard item={item} />
-          </SwiperSlide>
-        ))}
-      </Carousel>
+      > */}
+      {data?.map((item) => (
+        <SwiperSlide key={`featured-key-${item.id}`}>
+          <FeaturedCard item={item} />
+        </SwiperSlide>
+      ))}
+      {/* </Carousel> */}
     </div>
   );
 };

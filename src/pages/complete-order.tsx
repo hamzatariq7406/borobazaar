@@ -33,7 +33,7 @@ export default function Order() {
     }
 
 
-    axios.post("https://kahf-mall.herokuapp.com/api/orders", {
+    axios.post("https://server.kahfmall.com/api/orders", {
       orderItems: JSON.parse(localStorage.getItem("items") || ""),
       totalPrice: localStorage.getItem("total"),
       isPaid: true,

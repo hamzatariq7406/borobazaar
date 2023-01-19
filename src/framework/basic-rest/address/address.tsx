@@ -9,7 +9,7 @@ const fetchAddress = async () => {
     user = JSON.parse(localStorage.getItem("user") || "")
   }
 
-  const { data } = await axios.get("https://kahf-mall.herokuapp.com/api/address", {
+  const { data } = await axios.get("https://server.kahfmall.com/api/address", {
     headers: { Authorization: `Bearer ${user.token}` }
   })
   return {

@@ -31,7 +31,7 @@ const AddAddressForm: React.FC = () => {
       user = JSON.parse(localStorage.getItem("user") || "")
     }
 
-    axios.post("https://kahf-mall.herokuapp.com/api/address/add-address", {
+    axios.post("https://server.kahfmall.com/api/address/add-address", {
       title: values.title,
       default: true,
       address: {

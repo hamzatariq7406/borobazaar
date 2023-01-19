@@ -51,7 +51,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
         if (localStorage.getItem("user")) {
             user = JSON.parse(localStorage.getItem("user") || "")
         }
-        axios.post("https://kahf-mall.herokuapp.com/api/products", {
+        axios.post("https://server.kahfmall.com/api/products", {
             productName: productName,
             description: description,
             category: category,

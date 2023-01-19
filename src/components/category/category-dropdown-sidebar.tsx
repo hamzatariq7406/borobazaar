@@ -20,6 +20,7 @@ const CategoryDropdownSidebar: React.FC<CategorySidebarProps> = ({
     limit: 10,
   });
 
+  console.log(data)
   return (
     <aside
       className={cn('lg:sticky lg:top-16 category-mobile-sidebar', className)}

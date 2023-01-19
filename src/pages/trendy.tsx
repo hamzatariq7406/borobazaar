@@ -36,7 +36,7 @@ export default function Home() {
           data={banners}
           className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20 3xl:pb-2 pt-0.5 md:pt-0"
         />
-        <PopularProductFeed className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20 3xl:pb-2" />
+        {/* <PopularProductFeed className="mb-12 lg:mb-14 xl:mb-16 2xl:mb-20 3xl:pb-2" /> */}
       </Container>
       <DownloadApps />
     </>
@@ -45,7 +45,7 @@ export default function Home() {
 
 Home.Layout = Layout;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }: any) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(

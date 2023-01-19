@@ -78,6 +78,10 @@
   }
 }
 
+.swiper-slide {
+  height: unset !important;
+}
+
 @layer components {
   /* Header Menu */
   #siteHeader.is-scrolling .innerSticky {

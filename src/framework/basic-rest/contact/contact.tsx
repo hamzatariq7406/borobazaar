@@ -8,7 +8,7 @@ const fetchContact = async () => {
   if (localStorage.getItem("user")) {
     user = JSON.parse(localStorage.getItem("user") || "")
   }
-  const { data } = await axios.get("https://kahf-mall.herokuapp.com/api/contact", {
+  const { data } = await axios.get("https://server.kahfmall.com/api/contact", {
     headers: { Authorization: `Bearer ${user.token}` }
   });
 
