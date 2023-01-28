@@ -69,8 +69,8 @@ export default function ProductPopup() {
   const [shareButtonStatus, setShareButtonStatus] = useState<boolean>(false);
 
   const { price, basePrice, discount } = usePrice({
-    amount: data.salePrice ? data.salePrice : data.listPrice,
-    baseAmount: data.listPrice,
+    amount: data.listPrice,
+    baseAmount: data.salePrice ? data.salePrice : data.listPrice,
     currencyCode: 'USD',
   });
 

@@ -56,16 +56,16 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
   const { t } = useTranslation('common');
   
   const { price, basePrice, discount } = usePrice({
-    amount: product?.salePrice ? product?.salePrice : product?.listPrice,
-    baseAmount: product?.listPrice,
+    amount: product?.listPrice,
+    baseAmount: product?.salePrice ? product?.salePrice : product?.listPrice,
     currencyCode: 'USD',
   });
   const { price: minPrice } = usePrice({
-    amount: product?.listPrice ?? 0,
+    amount: product?.salePrice ?? 0,
     currencyCode: 'USD',
   });
   const { price: maxPrice } = usePrice({
-    amount: product?.listPrice ?? 0,
+    amount: product?.salePrice ?? 0,
     currencyCode: 'USD',
   });
 
@@ -107,11 +107,11 @@ const ProductCard: React.FC<ProductProps> = ({ product, className }) => {
       <div className="flex flex-col px-3 md:px-4 lg:px-[18px] pb-5 lg:pb-6 lg:pt-1.5 h-full">
         <div className="space-s-2 mb-1 lg:mb-1.5">
           <span className="inline-block font-semibold text-sm sm:text-15px lg:text-base text-skin-base">
-           $ {product_type === 'variable' ? `${minPrice} - ${maxPrice}` : product?.listPrice}
+           $ {product_type === 'variable' ? `${minPrice} - ${maxPrice}` : product?.salePrice}
           </span>
           {product?.salePrice !== product?.listPrice && (
             <del className="text-sm text-skin-base text-opacity-70">
-              {product?.salePrice}
+              {product?.listPrice}
             </del>
           )}
         </div>
