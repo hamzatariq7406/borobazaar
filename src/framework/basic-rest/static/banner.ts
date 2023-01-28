@@ -365,41 +365,7 @@ export const bannerDiscount = [
         height: 250,
       },
     },
-  },
-  {
-    id: 4,
-    title: 'Delight your summers',
-    slug: '/search',
-    image: {
-      mobile: {
-        url: '/assets/images/004.png',
-        width: 475,
-        height: 250,
-      },
-      desktop: {
-        url: '/assets/images/004.png',
-        width: 475,
-        height: 250,
-      },
-    },
-  },
-  {
-    id: 5,
-    title: 'Grocery Sale',
-    slug: '/search',
-    image: {
-      mobile: {
-        url: '/assets/images/006.png',
-        width: 475,
-        height: 250,
-      },
-      desktop: {
-        url: '/assets/images/006.png',
-        width: 475,
-        height: 250,
-      },
-    },
-  },
+  }
 ];
 
 export const homeSixBanner = {

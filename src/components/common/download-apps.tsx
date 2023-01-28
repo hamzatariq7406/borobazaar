@@ -38,7 +38,7 @@ const DownloadApps: React.FC<Props> = ({ className = 'pt-1.5 md:pt-0' }) => {
       <img
         src="/assets/images/003.png"
         alt={t('text-app-thumbnail')}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '654px' }}
       />
     </div>
   );

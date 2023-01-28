@@ -9,7 +9,7 @@ export const fetchBestSellerGroceryProducts = async ({ queryKey }: any) => {
     let category = ""
     const subdomain = window?.location?.hostname?.split('.')[0];
 
-    if (subdomain === "home") {
+    if (subdomain === "homeandkitchen") {
       category = 'Home & Kitchen';
     } else if (subdomain === "pets") {
       category = "Pet Supplies"

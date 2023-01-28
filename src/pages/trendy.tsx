@@ -3,7 +3,6 @@ import Layout from '@components/layout/layout-three';
 import Container from '@components/ui/container';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import DownloadApps from '@components/common/download-apps';
-import { bannerGridThree as banners } from '@framework/static/banner';
 import CollectionGrid from '@components/common/collection-grid';
 import BestSellerGroceryProductFeed from '@components/product/feeds/best-seller-grocery-product-feed';
 import PopularProductFeed from '@components/product/feeds/popular-product-feed';
@@ -21,6 +20,44 @@ import { fetchPopularProducts } from '@framework/product/get-all-popular-product
 import { LIMITS } from '@framework/utils/limits';
 
 export default function Home() {
+  const subdomain = window?.location?.hostname?.split('.')[0];
+
+  const banners = [
+    {
+      id: 1,
+      title: 'Love Spice Food',
+      slug: '/search',
+      image: {
+        mobile: {
+          url: `/assets/images/${subdomain}-static1.jpg`,
+          width: 450,
+          height: 255,
+        },
+        desktop: {
+          url: `/assets/images/${subdomain}-static1.jpg`,
+          width: 597,
+          height: 340,
+        },
+      },
+    },
+    {
+      id: 2,
+      title: 'Amazing Pet Food',
+      slug: '/search',
+      image: {
+        mobile: {
+          url: `/assets/images/${subdomain}-static2.jpg`,
+          width: 450,
+          height: 255,
+        },
+        desktop: {
+          url: `/assets/images/${subdomain}-static2.jpg`,
+          width: 597,
+          height: 340,
+        },
+      },
+    }]
+
   return (
     <>
       <Seo
@@ -29,7 +66,7 @@ export default function Home() {
         path="trendy"
       />
       <Container>
-        <HeroBannerWithCategory />
+        <HeroBannerWithCategory subdomain={subdomain} />
         {/* <BundleComboGrid data={bundle} /> */}
         <BestSellerGroceryProductFeed />
         <BannerGrid
