@@ -20,7 +20,11 @@ import { fetchPopularProducts } from '@framework/product/get-all-popular-product
 import { LIMITS } from '@framework/utils/limits';
 
 export default function Home() {
-  const subdomain = window?.location?.hostname?.split('.')[0];
+  let subdomain = null;
+  if (typeof window !== "undefined") {
+    window?.location?.hostname?.split('.')[0];
+  }
+
 
   const banners = [
     {
