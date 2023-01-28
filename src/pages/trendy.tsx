@@ -1,4 +1,5 @@
 import BannerGrid from '@components/common/banner-grid';
+import { useState, useEffect } from 'react';
 import Layout from '@components/layout/layout-three';
 import Container from '@components/ui/container';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -18,12 +19,14 @@ import { fetchCategories } from '@framework/category/get-all-categories';
 import { fetchBestSellerGroceryProducts } from '@framework/product/get-all-best-seller-grocery-products';
 import { fetchPopularProducts } from '@framework/product/get-all-popular-products';
 import { LIMITS } from '@framework/utils/limits';
+import { useEffectOnce } from 'react-use';
 
 export default function Home() {
-  let subdomain = null;
-  if (typeof window !== "undefined") {
-    window?.location?.hostname?.split('.')[0];
-  }
+  const [subdomain, setSubdomain] = useState("");
+
+  useEffect(() => {
+    setSubdomain(window?.location?.hostname?.split('.')[0])
+  }, [])
 
 
   const banners = [
