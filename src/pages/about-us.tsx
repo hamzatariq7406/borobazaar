@@ -29,7 +29,9 @@ export default function TermsPage() {
       <div
         className="flex justify-center h-[250px] lg:h-96 2xl:h-[500px] w-full bg-cover bg-no-repeat bg-center"
         style={{
-          backgroundImage: `url(${backgroundThumbnail})`,
+          backgroundImage: `url(${"/assets/images/homeandkitchen-moving1.jpg"})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: "100%"
         }}
       ></div>
       <div className="py-8 lg:py-16 2xl:py-20">
@@ -45,7 +47,7 @@ export default function TermsPage() {
               }}
             />
 
-            <div className="grid my-8 lg:my-14 grid-cols-2 gap-4">
+            {/* <div className="grid my-8 lg:my-14 grid-cols-2 gap-4">
               <img
                 src={aboutUs1}
                 alt={t('text-map')}
@@ -58,7 +60,7 @@ export default function TermsPage() {
                 alt={t('text-map')}
                 className=""
               />
-            </div>
+            </div> */}
           </div>
         </Container>
       </div>
