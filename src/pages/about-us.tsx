@@ -7,6 +7,7 @@ import DownloadApps from '@components/common/download-apps';
 import { aboutSetting } from '@settings/about-setting';
 import Image from '@components/ui/image';
 import Seo from '@components/seo/seo';
+import { useEffect, useState } from 'react';
 
 const backgroundThumbnail = '/assets/images/002.png';
 const aboutUs1 = '/assets/images/007.png';
@@ -18,6 +19,13 @@ const aboutUs6 = '/assets/images/about-us/6.png';
 
 export default function TermsPage() {
   const { t } = useTranslation('about');
+
+  const [subdomain, setSubdomain] = useState("");
+
+  useEffect(() => {
+    setSubdomain(window?.location?.hostname?.split('.')[0]);
+  }, []);
+
   return (
     <>
       <Seo
@@ -29,7 +37,7 @@ export default function TermsPage() {
       <div
         className="flex justify-center h-[250px] lg:h-96 2xl:h-[500px] w-full bg-cover bg-no-repeat bg-center"
         style={{
-          backgroundImage: `url(${"/assets/images/homeandkitchen-moving1.jpg"})`,
+          backgroundImage: `url(${`/assets/images/${subdomain}-moving1.jpg`})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: "100%"
         }}
