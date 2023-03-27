@@ -11,7 +11,7 @@ export const fetchBestSellerGroceryProducts = async ({ queryKey }: any) => {
 
     if (subdomain === "homeandkitchen") {
       category = 'Home & Kitchen';
-    } else if (subdomain === "pets") {
+    } else if (subdomain === "petsupplies") {
       category = "Pet Supplies"
     } else if (subdomain === "sports") {
       category = "Sports & Outdoors"
